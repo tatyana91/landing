@@ -1,0 +1,217 @@
+{% extends "/base.html" %}
+
+{% block header_menu %}
+    {% include("/Lk/inc/header_menu.html") %}
+{% endblock %}
+
+{% block mobile_header_menu %}
+{% include("/Lk/inc/mobile_header_menu.html") %}
+{% endblock %}
+
+{% block header_btns %}
+    {% include("/Lk/inc/header_btns.html") %}
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <div class="wrapper">
+            <div class="profileBlock">
+                <h1 class="titleLevel1 profileBlock__title">Описание заказа</h1>
+                <div class="profileBlock__item lkOrderInfo">
+                    <div class="lkOrderInfo__data">
+                        <div class="lkOrderInfo__item">
+                            <div class="lkOrderInfo__number">№ {{order.id}}</div>
+                            <div class="lkOrderInfo__date">{{order.time|date("d.m.Y H:i")}}</div>
+                            <div class="lkOrderInfo__status">
+                                <span class="status" style="background: {{order.status_bgcolor}}">{{order.status_name}}</span>
+                            </div>
+                        </div>
+                        <div class="lkOrderInfo__title">{{order.work_theme}}</div>
+                        <div>
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Тип работы:</div>
+                                <div class="orderDetails__value">{{order.work_type_title}}</div>
+                            </div>
+
+                            {% if (order.work_deadline) %}
+                                <div class="orderDetails">
+                                    <div class="orderDetails__title">Срок сдачи:</div>
+                                    <div class="orderDetails__value">{{order.work_deadline|date("d.m.Y")}}</div>
+                                </div>
+                            {% endif %}
+
+                            {% if (order.work_subject) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Предмет:</div>
+                                <div class="orderDetails__value">{{order.work_subject}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_count_page) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Количество страниц:</div>
+                                <div class="orderDetails__value">{{order.work_count_page}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_original) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Оригинальность:</div>
+                                <div class="orderDetails__value">{{order.work_original_title}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_vuz) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Образовательное учреждение:</div>
+                                <div class="orderDetails__value">{{order.work_vuz}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_plagiat) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Проверка на антиплагиат:</div>
+                                <div class="orderDetails__value">{{order.work_plagiat_title}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_url) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Ссылка на ресурс СДО:</div>
+                                <div class="orderDetails__value">{{order.work_url}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_login) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Логин от СДО:</div>
+                                <div class="orderDetails__value">{{order.work_login}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_password) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Пароль от СДО:</div>
+                                <div class="orderDetails__value">{{order.work_password}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_dis_type) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Тип диссертации:</div>
+                                <div class="orderDetails__value">{{order.work_dis_type}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_vystuplenie) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Текст выступления к защите:</div>
+                                <div class="orderDetails__value">да</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_presentation) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Презентация:</div>
+                                <div class="orderDetails__value">да</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_razdat) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Раздаточный материал:</div>
+                                <div class="orderDetails__value">да</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.work_requirements) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Требования:</div>
+                                <div class="orderDetails__value">{{order.work_requirements}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.email) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">Эл. почта:</div>
+                                <div class="orderDetails__value">{{order.email}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.fio) %}
+                            <div class="orderDetails">
+                                <div class="orderDetails__title">ФИО:</div>
+                                <div class="orderDetails__value">{{order.fio}}</div>
+                            </div>
+                            {% endif %}
+
+                            {% if (order.files|length > 0) %}
+                                <div class="orderDetails">
+                                    <div class="orderDetails__title">Прикрепленные файлы:</div>
+                                    <div class="orderDetails__value">
+                                        {% for files in order.files %}
+                                            <a href="/files/orders/{{order.id}}/{{files.name}}" class="link_dark" target="_blank">{{files.original_name}}</a><br>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="lkOrderInfo__price">
+                        <div class="orderPriceItem">
+                            <span>Предоплата 50%</span>
+                            <span>{{ order.total_cost / 2 }} руб.</span>
+                        </div>
+                        <div class="orderPriceItem lkOrderInfo__totalSum">
+                            <span>Стоимость заказа</span>
+                            <span>{{ (order.total_cost > 0) ? order.total_cost ~ " руб." : "" }}</span>
+                        </div>
+                        {% if (order.payment_sum > 0) %}
+                        <div class="orderPriceItem lkOrderInfo__paymentInfo">
+                            <span>Оплачено</span>
+                            <span>{{order.payment_sum}} руб.</span>
+                        </div>
+                        {% endif %}
+
+                        {% set disabled = 'btnRose_disabled' %}
+                        {% if ((order.status == 3 or order.status == 4 or order.status == 5) and order.total_cost > 0 and order.total_cost > order.payment_sum) %}
+                        {% set disabled = 'js-payment-popup' %}
+                        {% endif %}
+                        <button class="btn btnRose {{disabled}}" data-id="{{order.id}}">Оплатить</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profileBlock">
+                <h1 class="titleLevel1 profileBlock__title">Сообщения по заказу</h1>
+                <div class="profileBlock__item messagesWrap">
+                    <div class="js-messages">
+                        {% if order.messages|length > 0 %}
+                            <div class="messages">
+                                {% for message in order.messages %}
+                                    {% include("/Lk/inc/message.html") %}
+                                {% endfor %}
+                            </div>
+                    {% endif %}
+                    </div>
+                    <div class="js-file-upload" data-show="full" data-error_class="js-message-error">
+                        <div class="sendMessage">
+                            <div class="sendMessage__input fileUpload">
+                                <div class="fileUpload__btn-select"></div>
+                                <input name="work_files" class="fileUpload__input js-files-input js-add-files" type="file" multiple="">
+                            </div>
+
+                            <textarea class="sendMessage__textarea textarea js-order-message" name="message" placeholder="Напишите сообщение..."></textarea>
+
+                            <button class="btn btnRose sendMessage__btn js-send-order-message" data-id="{{order.id}}">Отправить</button>
+
+                            <div class="sendMessage__filesLabel fileIcons js-files-label"></div>
+
+                            <div class="sendMessage__error error js-message-error"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

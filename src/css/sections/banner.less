@@ -1,0 +1,102 @@
+.bannerWrap {
+	width: auto;
+	background: url("@{path_images}/banner.webp") center 86px no-repeat;
+	background-size: cover;
+	min-height: 667px;
+	height: auto;
+	margin-top: 86px;
+
+	.wrapper {
+		min-height: 590px;
+		height: auto;
+		display: flex;
+	}
+}
+
+.banner {
+    height: 100%;
+
+
+	&__title {
+		font-size: @font_size_h1;
+		line-height: 50px;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: @color_dark_gray;
+		max-width: 550px;
+		margin-bottom: 24px;
+        margin-top: 35%;
+
+		.xs-block({
+			font-size: 30px;
+			line-height: 40px;
+		});
+	}
+
+	&__text {
+		font-size: 20px;
+		line-height: 28px;	
+		color: @color_dark_gray;	
+		max-width: 480px;
+
+		.xs-block({
+			font-size: 18px;
+			line-height: 20px;	
+		});
+	}
+}
+
+.sm-block({
+	.banner {
+		padding: 0;
+	   
+		&__title {
+			font-size: 38px;
+			line-height: 40px;
+			padding-right: 100px;
+			margin-bottom: 30px;
+            margin-top: 20%;
+		}
+
+		&__text {
+			font-size: 22px;
+			line-height: 24px;
+			padding-right: 100px;
+			margin-bottom: 30px;
+		}
+	}
+});
+
+.xs-block({
+	.bannerWrap {
+		background-position: right center;
+	}
+
+	.banner {
+		padding: 0;
+
+		&__title {
+			text-align: center;
+			font-size: 28px;
+			line-height: 30px;
+			margin-bottom: 20px;
+			padding-right: 0;
+		}
+
+		&__text {
+			text-align: center;
+			font-size: 18px;
+			line-height: 20px;
+			margin-bottom: 25px;
+			padding-right: 0;
+		}
+
+        &__btn {
+			text-align: center;
+			font-size: 18px;
+			line-height: 20px;
+			margin-bottom: 25px;
+			padding-right: 0;
+		}
+	}
+});

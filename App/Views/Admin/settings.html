@@ -1,0 +1,31 @@
+{% extends "Admin/base.html" %}
+
+{% block content %}
+    <form action='/admin/settings' method='POST' enctype='multipart/form-data'>
+        <div class="item-title">Название сайта:</div>
+        <input type='text' name='site_name' value='{{settings.site_name}}' required/>
+        <div class="item-title">Подпись логотипа:</div>
+        <input type='text' name='logo_title' value='{{settings.logo_title}}' required/>
+        <div class="item-title">Телефон:</div>
+        <input type='text' name='phone' value='{{settings.phone}}'/>
+        <div class="item-title">Почта:</div>
+        <input type='text' name='mail' value='{{settings.mail}}'/>
+        <div class="item-title">Почта для получения писем с сайта:</div>
+        <input type='text' name='mailsend' value='{{settings.mailsend}}'/>
+        <div class="item-title">Почта для получения заказов:</div>
+        <input type='text' name='mailorders' value='{{settings.mailorders}}'/>
+        <div class="item-title">Копирайт:</div>
+        <input type='text' name='copyright' value='{{settings.copyright}}'/>
+        <div class="item-title">Вконтакте:</div>
+        <input type='text' name='soc_vk' value='{{settings.soc_vk}}'/>
+        <div class="item-title">Инстаграм:</div>
+        <input type='text' name='soc_ins' value='{{settings.soc_ins}}'/>
+
+        <div class="item-title">Заголовок баннера:</div>
+        <input type='text' name='banner_title' value='{{settings.banner_title}}'/>
+        <div class="item-title">Текст баннера:</div>
+        <input type='text' name='banner_text' value='{{settings.banner_text}}'/>
+
+        <input type='submit' name='edit' value='Сохранить'>
+    </form>
+{% endblock %}

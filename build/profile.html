@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Landing hw 5</title>
+		<link rel="stylesheet" href="css/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+	</head>
+	<body>
+		<div class="debugGrid">
+			<div>
+				<div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+
+		<header class="headerWrap">
+			<div class="wrapper">
+				<div class="header">
+					<div class="header__logo logo">
+						<div class="logo__item1 logoItem1">
+							<div class="logoItem1__item1">24</div>
+							<div class="logoItem1__item2">диплома</div>
+						</div>
+						<div class="logo__item2">
+							Сервис для консультаций студентов
+						</div>
+					</div>
+					<div class="header__menu">
+						<nav>
+							<ul class="menu">
+								<li class="menu__item">
+									<a href="#" class="menu__link">Главная</a>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">Личный кабинет</a>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">Мои заказы</a>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">Настройки</a>
+								</li>								
+							</ul>
+						</nav>
+					</div>
+					<button class="header__btn-enter btn btnBlue">Выйти</button>
+					<button class="header__btn-write btn btnRose">Новый заказ</button>
+				</div>
+			</div>
+		</header>
+
+		<section class="content">
+			<div class="wrapper">
+				<div class="profileBlock">
+					<h1 class="profileBlock__title">Личный кабинет</h1>
+					<div class="profileBlock__item lk">
+						<div class="lk__contacts">
+							<div class="lk__photo">
+								<img src="/img/profile_image.png">
+							</div>
+							<div class="lk__fioWrap">
+								<div class="lk__fio">Филатов Александр Валерьевич</div>
+								<div>+7 888 888-88-88</div>
+								<div>email@gmail.com</div>
+							</div>
+						</div>
+
+						<div class="lk__studyInfo">
+							<div>Санкт-Петербург</div>
+							<div>Санкт-Петербургский государственный университет</div>
+							<div>История</div>
+							<div>Археология</div>
+							<div>3 курс</div>
+						</div>
+
+						<div class="profileBlock__btn">
+							<button class="btn btnBlue">Редактировать</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="profileBlock">
+					<h1 class="profileBlock__title">Персональные данные</h1>
+
+
+					<div class="profileBlock__item">
+						<div class="lk__contacts">							
+							<div class="lk__personal lkPersonal">
+								<div class="lkPersonal__item">
+									<input class="input" name="fio" type="text" value="" placeholder="ФИО">
+								</div>
+								<div class="lkPersonal__item">
+									<input class="input" name="city" type="text" value="" placeholder="Город">
+								</div>
+								<div class="lkPersonal__item">
+									<input class="input" name="faculty" type="text" value="" placeholder="Факультет">
+								</div>
+								<div class="lkPersonal__item">
+									<input class="input" name="specialty" type="text" value="" placeholder="Специальность">
+								</div>
+								<div class="lkPersonal__item">
+									<input class="input" name="course" type="text" value="" placeholder="Курс">
+								</div>
+
+								<div class="profileBlock__btn">
+									<button class="btn btnRose">Сохранить изменения</button>
+								</div>
+							</div>
+							<div class="lk__photo lk__photo_edit">
+								<img src="/img/profile_image.png">
+							</div>
+						</div>						
+					</div>
+				</div>
+
+				<div class="profileBlock">
+					<h1 class="profileBlock__title">Контактные данные</h1>
+					<div class="profileBlock__item lkContacts">
+						<div class="lkContacts__item">
+							<input class="input" name="phone" type="text" value="" placeholder="Телефон">
+						</div>
+						<div class="lkContacts__item">
+							<input class="input" name="email" type="text" value="" placeholder="Электронная почта *">
+						</div>
+						
+
+						<div class="profileBlock__btn">
+							<button class="btn btnRose">Сохранить изменения</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="profileBlock">
+					<h1 class="profileBlock__title">Смена пароля</h1>
+					<div class="profileBlock__item lkPassword">
+						<div class="lkPassword__item">
+							<input class="input" name="current_password" type="text" value="" placeholder="Старый пароль *">
+						</div>
+						<div class="lkPassword__item">
+							<input class="input" name="new_password" type="text" value="" placeholder="Новый пароль *">
+						</div>
+						<div class="lkPassword__item">
+							<input class="input" name="new_password2" type="text" value="" placeholder="Подтверждение нового пароля *">
+						</div>
+
+						<div class="profileBlock__btn">
+							<button class="btn btnRose">Сохранить изменения</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="profileBlock">
+					<h1 class="profileBlock__title">Новый заказ</h1>
+					<div class="profileBlock__item lkNewOrder banner">
+						<form class="profileBlock__form">
+							
+							<div class="newOrder">
+								<select class="newOrder__workType select">
+									<option value="0">Тип работы *</option>
+								</select>
+								<input class="newOrder__workTheme input" type="text" value="" placeholder="Тема работы *">
+								<input class="newOrder__workDate input" type="text" value="" placeholder="Срок сдачи *">
+
+								<input class="newOrder__email input" type="text" value="" placeholder="Электронная почта *">
+								<input class="newOrder__name input" type="text" value="" placeholder="ФИО *">
+								<input class="newOrder__files input" type="text" value="" placeholder="Прикрепить файлы">	
+
+								<select class="newOrder__subject select">
+									<option value="0">Предмет</option>
+								</select>
+								<input class="newOrder__pages input" type="text" value="" placeholder="Количество страниц">
+								<select class="newOrder__original select">
+									<option value="0">Оригинальность</option>
+								</select>
+
+								<select class="newOrder__institution select">
+									<option value="0">Образовательное учреждение</option>
+								</select>
+								<select class="newOrder__plagiat select">
+									<option value="0">Проверка на антиплагиат</option>
+									<option value="1">antiplagiat.ru</option>
+								</select>
+								<label class="newOrder__report checkbox">
+									<input type="checkbox" value="">
+									<span class="checkmark"></span>
+									<span>Отчет</span>
+								</label>
+
+								<div class="newOrder__checkboxes">
+									<div class="checkboxes">
+										<label class="checkbox">
+											<input type="checkbox" value="">
+											<span class="checkmark"></span>
+											<span>Выступление к защите</span>
+										</label>
+										<label class="checkbox">
+											<input type="checkbox" value="">
+											<span class="checkmark"></span>
+											<span>Нормоконтроль</span>
+										</label>
+										<label class="checkbox">
+											<input type="checkbox" value="">
+											<span class="checkmark"></span>
+											<span>Рецензия</span>
+										</label>
+									</div>
+
+									<div class="checkboxes">
+										<label class="checkbox">
+											<input type="checkbox" value="">
+											<span class="checkmark"></span>
+											<span>Раздаточный материал</span>
+										</label>
+										<label class="checkbox">
+											<input type="checkbox" value="">
+											<span class="checkmark"></span>
+											<span>Аннотация</span>
+										</label>
+									</div>
+								</div>
+
+								<textarea class="newOrder__message textarea" placeholder="Требования (необязательно)"></textarea>
+
+								<div class="newOrder__btn">
+									<button class="btn btnRose">Заказать работу</button>	
+								</div>							
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="profileBlock">
+					<h1 class="profileBlock__title">Список заказов</h1>
+					<div class="profileBlock__item lkOrderInfo">
+						<div class="lkOrderInfo__data">
+							<div class="lkOrderInfo__item">
+								<div class="lkOrderInfo__number">№ 0001234</div>
+								<div class="lkOrderInfo__date">21.10.2019</div>
+								<div class="lkOrderInfo__status">
+									<span class="status status_new">новый заказ</span>
+								</div>								
+							</div>
+							<div class="lkOrderInfo__title">Локальная компьютерная сеть для торгово-посреднической компании: особенности проектирования.</div>
+							<div class="lkOrderInfo__item">
+								<span class="lkOrderInfo__type">Дипломная работа</span>
+								<span class="lkOrderInfo__pages">48-50 стр.</span>
+								<span class="lkOrderInfo__time">8 дней</span>	
+							</div>
+							<button class="btn btnBlue">Подробнее</button>
+						</div>
+						<div class="lkOrderInfo__price">
+							<div class="orderPriceItem">
+								<span>Стоимость</span>
+								<span></span>
+							</div>
+							<div class="orderPriceItem">
+								<span>Скидка</span>
+								<span></span>
+							</div>
+							<div class="orderPriceItem lkOrderInfo__totalSum">
+								<span>Сумма</span>
+								<span></span>
+							</div>
+							<button class="btn btnRose btnRose_disabled">Оплатить</button>
+						</div>
+					</div>
+					<div class="profileBlock__item lkOrderInfo">
+						<div class="lkOrderInfo__data">
+							<div class="lkOrderInfo__item">
+								<div class="lkOrderInfo__number">№ 0001234</div>
+								<div class="lkOrderInfo__date">21.10.2019</div>
+								<div class="lkOrderInfo__status">
+									<span class="status status_waiting">на оценке</span>
+								</div>								
+							</div>
+							<div class="lkOrderInfo__title">Использование информационных технологий в менеджменте предприятий.</div>
+							<div class="lkOrderInfo__item">
+								<span class="lkOrderInfo__type">Дипломная работа</span>
+								<span class="lkOrderInfo__pages">48-50 стр.</span>
+								<span class="lkOrderInfo__time">8 дней</span>	
+							</div>
+							<button class="btn btnBlue">Подробнее</button>
+						</div>
+						<div class="lkOrderInfo__price">
+							<div class="orderPriceItem">
+								<span>Стоимость</span>
+								<span></span>
+							</div>
+							<div class="orderPriceItem">
+								<span>Скидка</span>
+								<span></span>
+							</div>
+							<div class="orderPriceItem lkOrderInfo__totalSum">
+								<span>Сумма</span>
+								<span></span>
+							</div>
+							<button class="btn btnRose btnRose_disabled">Оплатить</button>
+						</div>
+					</div>
+					<div class="profileBlock__item lkOrderInfo">
+						<div class="lkOrderInfo__data">
+							<div class="lkOrderInfo__item">
+								<div class="lkOrderInfo__number">№ 0001234</div>
+								<div class="lkOrderInfo__date">21.10.2019</div>
+								<div class="lkOrderInfo__status">
+									<span class="status status_pay">ожидает оплаты</span>
+								</div>								
+							</div>
+							<div class="lkOrderInfo__title">Локальная компьютерная сеть для торгово-посреднической компании: особенности проектирования.</div>
+							<div class="lkOrderInfo__item">
+								<span class="lkOrderInfo__type">Дипломная работа</span>
+								<span class="lkOrderInfo__pages">48-50 стр.</span>
+								<span class="lkOrderInfo__time">8 дней</span>	
+							</div>
+							<button class="btn btnBlue">Подробнее</button>
+						</div>
+						<div class="lkOrderInfo__price">
+							<div class="orderPriceItem">
+								<span>Стоимость</span>
+								<span>500 руб.</span>
+							</div>
+							<div class="orderPriceItem">
+								<span>Скидка</span>
+								<span>10%</span>
+							</div>
+							<div class="orderPriceItem lkOrderInfo__totalSum">
+								<span>Сумма</span>
+								<span>450 руб.</span>
+							</div>
+							<button class="btn btnRose">Оплатить</button>
+						</div>
+					</div>	
+
+					<div class="profileBlock__item lkOrderInfo">
+						<div style="display: flex;width: 100%;flex-wrap: wrap;">
+							<span class="status status_new">новый заказ</span>
+							<span class="status status_waiting">на оценке</span>
+							<span class="status status_pay">ожидает оплаты</span>
+							<span class="status status_process">в работе</span>
+							<span class="status status_ready">выполнен</span>
+							<span class="status status_closed">закрыт</span>
+						</div>
+					</div>				
+				</div>		
+
+				<div class="profileBlock">
+					<h1 class="profileBlock__title">Описание заказа</h1>					
+					<div class="profileBlock__item lkOrderInfo">
+						<div class="lkOrderInfo__data">
+							<div class="lkOrderInfo__item">
+								<div class="lkOrderInfo__number">№ 0001234</div>
+								<div class="lkOrderInfo__date">21.10.2019</div>
+								<div class="lkOrderInfo__status">
+									<span class="status status_pay">ожидает оплаты</span>
+								</div>								
+							</div>
+							<div class="lkOrderInfo__title">Локальная компьютерная сеть для торгово-посреднической компании: особенности проектирования.</div>
+							<div class="">
+								<div class="orderDetails">
+									<div class="orderDetails__title">Тип работы:</div>
+									<div class="orderDetails__value">Дипломная работа</div>
+								</div>
+								<div class="orderDetails">
+									<div class="orderDetails__title">Дата заказа:</div>
+									<div class="orderDetails__value">21.10.2019</div>
+								</div>
+								<div class="orderDetails">
+									<div class="orderDetails__title">Количество страниц:</div>
+									<div class="orderDetails__value">2 стр.</div>
+								</div>
+								<div class="orderDetails">
+									<div class="orderDetails__title">Срок исполнения:</div>
+									<div class="orderDetails__value">1 день</div>
+								</div>
+								<div class="orderDetails">
+									<div class="orderDetails__title">Прикрепленные файлы:</div>
+									<div class="orderDetails__value">
+										<a href="#" class="link_dark">Требования1.docx</a><br>
+										<a href="#" class="link_dark">Требования2.docx</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="lkOrderInfo__price">
+							<div class="orderPriceItem">
+								<span>Стоимость</span>
+								<span>500 руб.</span>
+							</div>
+							<div class="orderPriceItem">
+								<span>Скидка</span>
+								<span>10%</span>
+							</div>
+							<div class="orderPriceItem lkOrderInfo__totalSum">
+								<span>Сумма</span>
+								<span>450 руб.</span>
+							</div>
+							<button class="btn btnRose">Оплатить</button>
+						</div>
+					</div>			
+				</div>
+
+				<div class="profileBlock">
+					<h1 class="profileBlock__title">Сообщения по заказу</h1>					
+					<div class="profileBlock__item messagesWrap">
+						<div class="messages">
+							<div class="message">
+							<div class="message__image">
+								<img src="/img/manager_image.svg">
+							</div>
+							<div class="message__data">
+								<div>
+									<span class="message__name">Екатерина, менеджер</span>
+									<span class="message__date">21.10.19  18:34</span>
+								</div>
+								<div class="message__text">
+									Curabitur aliquam nisl quis ligula tempus, ac hendrerit metus hendrerit. Sed id lorem enim. Fusce quis lacus ut est sodales consectetur at pellentesque felis. Quisque quis nulla et tortor mattis fringilla. Phasellus bibendum accumsan mattis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacus orci, porta sed lobortis nec, placerat vestibulum nulla. In convallis ligula quis tellus consectetur sodales. In posuere lectus interdum, consequat justo et, scelerisque velit. Nulla sagittis mattis nisi, at mollis lacus viverra vel. Vestibulum maximus nisl eget varius venenatis.
+								</div>
+							</div>
+						</div>
+						</div>
+						<div class="sendMessage">
+							<input class="sendMessage__input input" name="message" type="text" value="" placeholder="Напишите сообщение...">
+							<button class="btn btnRose">Отправить</button>
+						</div>
+					</div>			
+				</div>
+
+					
+			</div>
+		</section>
+
+		<footer class="footerWrap">
+			<div class="wrapper">
+				<div class="footer">
+					<div class="footer__logo">
+						<div class="logo">
+							<div class="logo__item1 logoItem1">
+								<div class="logoItem1__item1">24</div>
+								<div class="logoItem1__item2">диплома</div>
+							</div>
+							<div class="logo__item2">
+								Сервис для консультаций студентов
+							</div>
+						</div>
+						<div class="footer__copyright">
+							&copy; 2019 site Все права защищены
+						</div>
+					</div>
+					<div class="footer__contacts">
+						<div class="footerTitle">Свяжитесь с нами:</div>
+						<div class="footer__phone">+7 911 111-11-11</div>
+						<div class="footer__email">info@site.ru</div>
+					</div>
+					<form class="footer__subscribe">
+						<div class="footerTitle">Подписаться на рассылку новостей:</div>
+						<div class="subscribe">
+							<input type="text" placeholder="Ваша электронная почта" class="subscribe__email input">
+							<button class="subscribe__btn btn btnRose">Подписаться</button>
+						</div>						
+					</form>
+				</div>
+			</div>
+		</footer>
+
+	</body>
+</html>

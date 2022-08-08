@@ -1,0 +1,52 @@
+.logo {
+  display: block;
+  text-decoration: none;
+
+  &__icon {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  &__subtitle {
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 600;
+    color: @color_dark_gray;
+    display: block;
+  }
+}
+
+.logoTitle {
+  display: inline-block;
+
+  &__title {
+    color: @color_rose;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 40px;
+    display: block;
+  }
+
+  &__title2 {
+    color: @color_dark_gray;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+  }
+}
+
+.footer {
+  .logo {
+    &__subtitle {
+      color: #fff;
+    }
+  }
+
+  .logoTitle {
+    &__title2 {
+      color: #fff;
+    }
+  }
+}

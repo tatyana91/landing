@@ -1,0 +1,133 @@
+.promisesTitle {
+	margin: 40px 0 30px 0;
+}
+
+.promises {
+	background: #f5f5f5 url("@{path_images}/pencils.png") no-repeat 5% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7% 7% 7% 30%;
+    border-radius: @border_radius;
+}
+
+.promisesItem {
+	&__text {
+		outline: none;
+		h3 {
+			&:extend(.h3);
+			margin-bottom: 20px;
+		}
+
+		p {
+			margin-bottom: 20px;
+		}
+
+		ul {
+			margin-left: 30px;
+			margin-bottom: 20px;
+		}
+
+		ul li {
+			list-style-image: url("@{path_images}/ul.png");
+			margin-bottom: 10px;
+		}
+	}
+
+	.slick-dots {
+		text-align: left;
+		margin: 0 -13px;
+		position: relative;
+		bottom: 0;
+	}
+
+	&__controls{
+		display: flex;
+		justify-content: space-between;
+		margin-top: 40px;
+	}
+
+	&__btns {
+		position: relative;
+		flex-grow: 1;
+	}
+}
+
+.btns {
+	&__btn {
+		width: 10px;
+		height: 10px;
+		border-radius: 5px;
+		background: @color_lite_gray2;
+		display: inline-block;
+		font-size: 0;
+		margin-right: 5px;
+		cursor: pointer;
+
+		&-active {
+			background: @color_blue;
+		}
+	}
+}
+
+.arrowLeft {
+	width: 40px;
+    border-top: 2px solid @color_lite_gray2;
+    margin: 0 5px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    &:before {
+    	content: '';
+	    border: solid @color_lite_gray2;
+	    border-width: 0 2px 2px 0;
+	    display: inline-block;
+	    padding: 5px;
+	    transform: rotate(135deg);
+	    position: absolute;
+	    top: -7px;
+	    left: 0;
+    }
+}
+
+.arrowRight {
+	width: 40px;
+    border-top: 2px solid @color_lite_gray2;
+    margin: 0 5px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    &:before {
+    	content: '';
+	    border: solid @color_lite_gray2;
+	    border-width: 0 2px 2px 0;
+	    display: inline-block;
+	    padding: 5px;
+	    transform: rotate(-45deg);
+	    position: absolute;
+	    top: -7px;
+	    right: 0;
+    }
+}
+
+.ld-block({
+	.promises {
+		background-position: 50% 0%;
+		padding: 7% 7% 7% 20%;
+	}	
+});
+
+.md-block({
+	.promises {
+		background: @color_lite_gray;
+		padding: 20px;
+	}	
+});
+
+.xs-block({
+	.promises {
+		padding: 20px;
+	}	
+});

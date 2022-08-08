@@ -1,0 +1,133 @@
+<div class="wrapper" id="order_data">
+    <div class="formOrder newOrder">
+        <select class="newOrder__workType select js-require-field js-work-type" name="work_type">
+            <option value="0">Тип работы *</option>
+            {% for service in order_params.services %}
+                <!--{% set selected = "" %}
+                {% if page.full_url and page.full_url == service.page_full_url %}
+                    {% set selected = "selected" %}
+                {% endif %}-->
+                <option value="{{service.id}}">{{service.title}}</option>
+            {% endfor %}
+        </select>
+
+        <div class="newOrder__subject">
+            <input class="input js-subject js-require-field" name="work_subject" value="" placeholder="Предмет *">
+            <div class="subjectsVariants js-subject-items"></div>
+        </div>
+
+        <input class="newOrder__workDate input js-datepicker" name="work_deadline"
+               type="text" value="" placeholder="Срок сдачи" autocomplete="off">
+
+        <input class="newOrder__email input js-require-field" name="work_email" type="tel"
+               value="" placeholder="+7 (999) 999-99-99 *">
+
+        <input class="newOrder__fio input" name="work_fio" type="text"
+               value="" placeholder="ФИО">
+
+        <div class="newOrder__files input js-file-upload fileUpload" data-error_class="js-order-error">
+            <div class="fileUpload__btn-select"></div>
+            <div class="fileUpload__info">Файлы</div>
+            <input name="work_files" class="fileUpload__input js-files-input js-add-files" type="file" multiple>
+        </div>
+
+        <div class="newOrder orderParams js-order-params">
+            <input class="newOrder__workTheme input js-check-type" name="work_theme" type="text" data-types="8,9,10,11,14,13,12,17,22,18,25,21,20,19,16,23,26,27,28"
+                   value="" placeholder="Тема работы" autocomplete="off">
+
+            <input class="newOrder__pages input js-check-type" name="work_count_page" data-types="8,9,10,14,13,12,17,22,18,25,24,21,20,19,16,27,28"
+                   type="text" value="" placeholder="Количество страниц">
+
+            <select class="newOrder__original select js-check-type" name="work_original" data-types="8,9,10,11,14,13,12,17,25,24,21,19,16,27,28">
+                <option value="0">Оригинальность</option>
+                {% for original_item in order_params.original %}
+                <option value="{{original_item.id}}">{{original_item.name}}</option>
+                {% endfor %}
+            </select>
+
+            <input class="newOrder__institution input" name="work_vuz" type="text" value="" placeholder="Образовательное учреждение">
+
+            <select class="newOrder__plagiat select js-check-type" name="work_plagiat" data-types="8,9,10,14,13,12,17,25,24,21,19,16,27,28" >
+                <option value="0">Проверка на антиплагиат</option>
+                {% for antiplagiat_item in order_params.antiplagiat %}
+                <option value="{{antiplagiat_item.id}}">{{antiplagiat_item.name}}</option>
+                {% endfor %}
+            </select>
+
+            <input class="newOrder__url input js-url js-check-type" name="work_url" data-types="15"
+                   value="" type="text" placeholder="Ссылка на ресурс СДО" title="Ссылка на ресурс системы дистанционного обучения">
+
+            <input class="newOrder__login input js-login js-check-type" name="work_login" data-types="15"
+                   value="" type="text" placeholder="Логин в СДО" title="Логин в системе дистанционного обучения">
+
+            <input class="newOrder__password input js-password js-check-type" name="work_password" data-types="15"
+                   value="" type="text" placeholder="Пароль в СДО" title="Пароль в системе дистанционного обучения">
+
+            <div class="newOrder__radioBtns js-check-type" data-types="9,27,28">
+                <div class="radioBtns">
+                    <label class="radio">
+                        <input type="radio" name="work_dis_type" value="1">
+                        <span class="radiomark"></span>
+                        <span>магистерская</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="work_dis_type" value="2">
+                        <span class="radiomark"></span>
+                        <span>кандидатская</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="work_dis_type" value="3">
+                        <span class="radiomark"></span>
+                        <span>докторская</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="work_dis_type" value="4">
+                        <span class="radiomark"></span>
+                        <span>монография</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="work_dis_type" value="5">
+                        <span class="radiomark"></span>
+                        <span>научная работа</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="newOrder__checkboxes js-check-type" data-types="8,9">
+                <div class="checkboxes">
+                    <label class="checkbox">
+                        <input type="checkbox" value="" name="work_vystuplenie">
+                        <span class="checkmark"></span>
+                        <span>Текст выступления к защите</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="" name="work_presentation">
+                        <span class="checkmark"></span>
+                        <span>Презентация</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="" name="work_razdat">
+                        <span class="checkmark"></span>
+                        <span>Раздаточный материал</span>
+                    </label>
+                </div>
+            </div>
+
+            <textarea class="newOrder__message textarea" name="work_requirements" placeholder="Требования (необязательно)"></textarea>
+        </div>
+
+        <div class="newOrder__error js-order-error"></div>
+        <div class="newOrder__success js-order-success"></div>
+
+        <div class="newOrder__fileLabel fileIcons js-files-label"></div>
+
+        <label class="newOrder__agreement checkbox">
+            <input type="checkbox" value="" name="work_agree" checked>
+            <span class="checkmark"></span>
+            <span>Согласие на обработку <a href="/politika_konfidencialnosti" target="_blank" class="link">персональных данных</a></span>
+        </label>
+        <div class="newOrder__btn">
+            <button class="btn btnRose js-create-order">Отправить заявку</button>
+        </div>
+    </div>
+</div>

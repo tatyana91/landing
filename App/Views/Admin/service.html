@@ -1,0 +1,38 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+<form action='/admin/services?act={{act}}&id={{service.id}}' method='POST' enctype='multipart/form-data'>
+    <div class="item-title">Cтраница:</div>
+    <select name="page_id">
+        <option value="0">не выбрано</option>
+        {% for page in pages %}
+            {% set selected = '' %}
+            {% if (page.id == service.page_id) %}
+                {% set selected = 'selected' %}
+            {% endif %}
+            <option value="{{page.id}}" {{selected}}>{{page.full_title}}</option>
+        {% endfor %}
+    </select>
+    <div class="item-title">Название:</div>
+    <input type='text' name='title' value='{{service.title}}'/>
+    <div class="item-title">Лого (перед загрузкой картинки оптимизируйте её с помощью сервиса <a href='https://tinypng.com/' target='_blank'>tinypng</a></span>):</div>
+    <input type='file' name='logo'/>
+    {% if (service.path) %}
+        <img src='/images/services/{{service.path}}' style='max-width: 150px'/><br>
+        <div><input type='checkbox' name='del_file' value=''/> Удалить</div><br>
+    {% endif %}
+    <input type="hidden" name="path" value="{{service.path}}">
+    <div class="item-title">Время:</div>
+    <input type='text' name='time' value='{{service.time}}'/>
+    <div class="item-title">Цена, от:</div>
+    <input type='text' name='price' value='{{service.price}}'/>
+    <div class="item-title">Рейтинг:</div>
+    <input type='text' name='rate' value='{{service.rate}}'/>
+    <input type='hidden' name='id' value='{{service.id}}'>
+    <input type='submit' name='edit' value='Сохранить'>
+</form>
+{% endblock %}

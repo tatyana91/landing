@@ -1,0 +1,54 @@
+{% extends "/base.html" %}
+
+{% set page_title = page.title %}
+{% set page_breadcrumbs = page.breadcrumbs %}
+
+{% block page_content %}
+    <h1 class="titleLevel1 profileBlock__title">{{page.title}}</h1>
+
+    {% if (page.full_url != 'politika_konfidencialnosti') %}
+        <div class="profileBlock__item" style="padding: 10px">
+            {% include("/inc/form_order.html") %}
+        </div>
+    {% endif %}
+
+    <div class="profileBlock__item">
+        {% if (page.text) %}
+            <div class="tinymceContent">{{page.text|raw}}</div>
+        {% endif %}
+
+        {% if (page.id) == 2 %}
+            <div class="services">
+                {% for service in order_params.services %}
+                {% if (service.show_index) %}
+                {% if (service.page_full_url) %}
+                <a href="/{{service.page_full_url}}" class="services__item serviceItem" title="Подробнее">
+                    {% if (service.path) %}
+                    <img class="serviceItem__icon" src="/images/services/{{service.path}}" alt="{{service.title}}">
+                    {% endif %}
+                    <h3 class="titleLevel3 serviceItem__title">{{service.title}}</h3>
+                    <p class="serviceItem__time">{{service.time}}</p>
+                    <p class="serviceItem__price">{{service.price}}</p>
+                </a>
+                {% else %}
+                <div class="services__item serviceItem">
+                    {% if (service.path) %}
+                    <img class="serviceItem__icon" src="/images/services/{{service.path}}" alt="{{service.title}}">
+                    {% endif %}
+                    <h3 class="titleLevel3 serviceItem__title">{{service.title}}</h3>
+                    <p class="serviceItem__time">{{service.time}}</p>
+                    <p class="serviceItem__price">{{service.price}}</p>
+                </div>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!--{% include("/inc/steps.html") %}-->
+
+    <div class="profileBlock__item" style="padding: 0">
+        {% include("/inc/send_message.html") %}
+    </div>
+{% endblock %}

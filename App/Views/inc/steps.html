@@ -1,0 +1,25 @@
+<section class="stagesWrap" id="kak_my_rabotaem">
+    <div class="wrapper">
+        <h2 class="titleLevel2 stagesTitle">{{steps_info.title}}</h2>
+        <div class="stages">
+            {% for step in steps %}
+            <div class="stages__item stageItem">
+                <div class="steps">
+                    <div class="steps__number">{{ loop.index }}</div>
+                    <div class="steps__title">шаг</div>
+                </div>
+                <div class="stageItem__step"></div>
+                <div class="stageItem__title">{{step.title}}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="stagesText">
+            {{steps_info.description}}
+        </div>
+        <div class="stagesBtn">
+            <a href="#order_data" class="btn btnRose">
+                Узнать стоимость
+            </a>
+        </div>
+    </div>
+</section>

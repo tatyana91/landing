@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/admin/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/admin/style.css?{{date().timestamp}}"/>
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+
+    <link rel="shortcut icon" href="/images/favicons_admin/favicon-32x32.png" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons_admin/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons_admin/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons_admin/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicons_admin/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicons_admin/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="robots" content="noindex,nofollow">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://site.ru" target=_blank>site.ru</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><div>Добро пожаловать, {{login}}</div></li>
+                    <li><a href="/admin/logout">Выйти</a></li>
+                </ul>
+                <ul id="mob_menu" class="nav navbar-nav navbar-right">
+                    {% for menu_item in menu %}
+                        {% if menu_item.active == true %}
+                            {% set active = "active" %}
+                        {% else %}
+                            {% set active = "" %}
+                        {% endif %}
+                        <li class="{{ active }}">
+                            <a href="{{menu_item.url}}">{{menu_item.title}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    {% for menu_item in menu %}
+                        {% if menu_item.active == true %}
+                            {% set active = 'active' %}
+                        {% else %}
+                            {% set active = '' %}
+                        {% endif %}
+                        <li class="{{ active }}">
+                            <a href="{{menu_item.url}}">{{menu_item.title}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                {% if show_add_btn == true %}
+                    <div class="btn">
+                        <a  href="{{add_btn_link}}">Добавить</a>
+                    </div>
+                {% endif %}
+                <h1 class="titleLevel1 page-header">{{ title }}</h1>
+                <div id="notice">{{ notice }}</div>
+                <div id="error">{{ error }}</div>
+
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="js-edit-error save-result save-result_error"></div>
+    <div class="js-edit-success save-result"></div>
+
+    <script src='/js/jquery-3.2.1.min.js'></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/datepicker-ru.js"></script>
+    <script src='/js/admin/bootstrap.min.js'></script>
+    <script src="https://cdn.tiny.cloud/1/723vr0yqyxyi1kdlcj0nnx1mpuwqv6o4wbzrs9lyr8k5wxhi/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src='/js/admin/script.js?{{date().timestamp}}'></script>
+</body>
+</html>

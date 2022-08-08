@@ -1,0 +1,52 @@
+<div class="modal payment">
+    <form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml" class="modal__content payment__content js-payment-form">
+        <div class="modal__close js-payment-close"></div>
+        <h3 class="modal__title">Оплата заказа №<span class="js-payment-order-number"></span></h3>
+        <div class="modal__input modalBlock">
+            <span class="modalBlock__label">Сумма к оплате:</span>
+            <div>
+                <input name="payment_sum" type="radio" class="js-sum50-val" value="" data-type="number">
+                <span>Предоплата 50% - <span class="js-sum50">0</span> руб.</span>
+            </div>
+            <div>
+                <input name="payment_sum" type="radio" class="js-sum100-val" value="" data-type="number">
+                <span>Полная стоимость - <span class="js-sum100">0</span> руб.</span>
+            </div>
+            <div>
+                <input name="payment_sum" type="radio" class="js-sum-last-val" value="" data-type="number">
+                <span>Остаток - <span class="js-sum-last">0</span> руб.</span>
+            </div>
+        </div>
+        <div class="modal__input modalBlock">
+            <span class="modalBlock__label">Способ оплаты:</span>
+            <div>
+                <input name="paymentType" type="radio" value="PC">
+                <span>Яндекc.Деньги (комиссия 0.5%)</span>
+            </div>
+            <div>
+                <input name="paymentType" type="radio" value="AC">
+                <span>Банковская карта (комиссия 2%)</span>
+            </div>
+        </div>
+
+        <div class="js-payment-amount"></div>
+
+        <input type="hidden" name="label" class="js-label-order-id" value="0">
+        <input type="hidden" name="receiver" value="4100111384148480">
+        <input type="hidden" name="formcomment" value="{{params.server_name}}">
+        <input type="hidden" name="quickpay-form" value="shop">
+        <input type="hidden" name="targets" value="">
+        <input type="hidden" name="need-fio" value="false">
+        <input type="hidden" name="need-email" value="true">
+        <input type="hidden" name="need-phone" value="false">
+        <input type="hidden" name="need-address" value="false">
+
+        <input type="hidden" name="sum" value="">
+
+        <input type="hidden" name="successURL" value="{{params.server_name}}">
+
+        <div class="modal__error js-payment-error"></div>
+
+        <button class="btn btnRose">Оплатить</button>
+    </form>
+</div>

@@ -1,0 +1,68 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+
+<form action="" method="get">
+    <div class="checkboxes">
+        <span style="margin-right: 10px;">Показывать:</span>
+        {% for ref_status in ref_statuses %}
+            <label class="checkbox">
+                <input type="checkbox" value="{{ref_status.id}}" name="statuses[]" class="js-change-temp-status"
+                       {{ (ref_status.id in statuses) ? 'checked' : '' }}>
+                <span class="checkmark"></span>
+                <span style="font-weight: normal">{{ref_status.name}}</span>
+            </label>
+        {% endfor %}
+    </div>
+</form>
+
+<div class='table-responsive'>
+    <table id='admin_table' class='table table-striped'>
+        <thead>
+        <tr>
+            <th>№п/п</th>
+            <th>Статус</th>
+            <th>Дата</th>
+            <th>Пользователь</th>
+            <th>Телефон</th>
+            <th>Эл. почта</th>
+            <th>Сумма заказа</th>
+            <th>Управление</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{order.id}}</td>
+                    <td>
+                        <div style="display: -webkit-box; display: flex; flex-wrap: wrap; align-items: center;">
+                            <span class="status" style="background: {{order.status_bgcolor}}; margin-right: 10px">{{order.status_name}}</span>
+                            {% if (order.count_messages) %}
+                            <div class="orderMessagesCount">
+                                <span class="orderMessagesCount__count">{{order.count_messages}}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>{{order.time|date("d.m.Y H:i")}}</td>
+                    <td>{{order.fio}}</td>
+                    <td>{{order.phone}}</td>
+                    <td>{{order.email}}</td>
+                    <td>{{order.total_cost}} руб.</td>
+                    <td class='change'>
+                        <div class="control-btn">
+                            <a href='/admin/orders?act=show&id={{order.id}}' title='Подробнее'>
+                                Подробнее
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

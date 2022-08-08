@@ -1,0 +1,27 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+
+<div class='table-responsive'>
+    <table id='admin_table' class='table table-striped'>
+        <thead>
+        <tr>
+            <th>Название</th>
+            <th>Рейтинг</th>
+        </tr>
+        </thead>
+        <tbody class="sortable" data-table="subjects">
+            {% for subject in subjects %}
+                <tr class="{{archived}} js-item" data-id="{{subject.id}}">
+                    <td>{{subject.full_name}}</td>
+                    <td>{{subject.rate}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

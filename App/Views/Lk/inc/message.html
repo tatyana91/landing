@@ -1,0 +1,17 @@
+<div class="message">
+    <div class="message__image">
+        <img src="{{message.user_photo}}">
+    </div>
+    <div class="message__data">
+        <div>
+            <span class="message__name">{{message.fio}}</span>
+            <span class="message__date">{{message.time|date("d.m.Y H:i")}}</span>
+        </div>
+        <div class="message__text">{{message.text}}</div>
+        <div class="message__files">
+            {% for files in message.files %}
+                <a href="/files/orders/{{files.order_id}}/{{files.name}}" class="link_dark" target="_blank">{{files.original_name}}</a><br>
+            {% endfor %}
+        </div>
+    </div>
+</div>

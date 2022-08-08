@@ -1,0 +1,116 @@
+{% extends "/base.html" %}
+
+{% block content %}
+    <section class="bannerWrap">
+        <div class="wrapper">
+            <div class="banner">
+                <h1 class="banner__title">{{settings.banner_title}}</h1>
+                <p class="banner__text">{{settings.banner_text}}</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="formOrderWrap">
+        {% include("/inc/form_order.html") %}
+    </div>
+
+    <section class="servicesWrap" id="yslygi">
+        <div class="wrapper">
+            <h2 class="servicesTitle titleLevel2">Услуги</h2>
+            <div class="services">
+                {% for service in order_params.services %}
+                    {% if (service.show_index) %}
+                        {% if (service.page_full_url) %}
+                            <a href="/{{service.page_full_url}}" class="services__item serviceItem" title="Подробнее">
+                                {% if (service.path) %}
+                                <img class="serviceItem__icon" src="/images/services/{{service.path}}" alt="{{service.title}}" width="85" height="85">
+                                {% endif %}
+                                <h3 class="titleLevel3 serviceItem__title">{{service.title}}</h3>
+                                <p class="serviceItem__time">{{service.time}}</p>
+                                <p class="serviceItem__price">{{service.price}}</p>
+                            </a>
+                        {% else %}
+                            <div class="services__item serviceItem">
+                                {% if (service.path) %}
+                                <img class="serviceItem__icon" src="/images/services/{{service.path}}" alt="{{service.title}}" width="85" height="85">
+                                {% endif %}
+                                <h3 class="titleLevel3 serviceItem__title">{{service.title}}</h3>
+                                <p class="serviceItem__time">{{service.time}}</p>
+                                <p class="serviceItem__price">{{service.price}}</p>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="aboutWrap" id="o_kompanii">
+        <div class="wrapper">
+            <h2 class="titleLevel2 aboutTitle">{{about_info.title}}</h2>
+            <div class="about">
+                <div class="about__text">{{about_info.text|raw}}</div>
+                <div class="about__image" style="max-height: 518px;"></div>
+            </div>
+        </div>
+    </section>
+
+    {% include("/inc/steps.html") %}
+
+    <section class="promisesWrap" id="garantii">
+        <div class="wrapper">
+            <h2 class="titleLevel2 promisesTitle">Гарантии</h2>
+            <div class="promises">
+                <div class="promises__item promisesItem">
+                    <div class="js-promises">
+                        {% for promise in promises %}
+                        <div class="promisesItem__text">
+                            <h3 class="titleLevel3">{{promise.title}}</h3>
+                            {{promise.text|raw}}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="promisesItem__controls">
+                        <div class="promisesItem__btns">
+                        </div>
+                        <div class="promisesItem__arrows arrows">
+                            <div class="arrowLeft"></div>
+                            <div class="arrowRight"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if seo_text.text != '' %}
+    <section class="aboutWrap" style="margin-top: 48px;">
+        <div class="wrapper">
+            <div class="about__text" style="width: 100%;margin: 0;">{{seo_text.text|raw}}</div>
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="contactsWrap" id="kontakty">
+        <div class="wrapper">
+            <h2 class="titleLevel2 contactsTitle">Контакты</h2>
+            <div class="contacts">
+                <div class="contacts__item contacts__item-email">
+                    <img src="/images/mail.png" alt="Почта" width="32" height="26">
+                    <a href="mailto:{{settings.mail}}">{{settings.mail}}</a>
+                </div>
+                <div class="contacts__item contacts__item-phone">
+                    <img src="/images/whatsapp2.png" alt="Телефон" width="32" height="32">
+                    <a href="https://wa.me/79516605146" target="_blank">Написать в WhatsApp</a>
+                </div>
+                <div class="contacts__item contacts__item-vk">
+                    <img src="/images/vk.png" alt="Вконтакте" width="32" height="23">
+                    <a href="https://{{settings.soc_vk}}" target="_blank">{{settings.soc_vk}}</a>
+                </div>
+            </div>
+
+            {% include("/inc/send_message.html") %}
+        </div>
+    </section>
+
+{% endblock %}

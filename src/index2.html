@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Landing hw 5</title>
+		<link rel="stylesheet" href="css/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+	<body>
+	<div class="modal auth js-auth-bg active">
+		<div class="modal__content">
+			<div class="modal__close js-auth-close"></div>
+			<h3 class="modal__title">Вход</h3>
+			<label class="modal__input modalBlock">
+				<span class="modalBlock__label">Адрес эл.почты:</span>
+				<input class="modalBlock__input input js-login-email" type="text" value="">
+			</label>
+			<label class="modal__input modalBlock">
+				<span class="modalBlock__label">Пароль:</span>
+				<input class="modalBlock__input input js-login-password" type="password" value="">
+			</label>
+			<div class="modal__error js-login-error"></div>
+			<a href="javascript:void(0)" class="modal__link link">Забыли пароль?</a>
+			<div class="modal__btns">
+				<button class="btn btnRose js-login">Войти</button>
+				<a href="javascript:void(0)" class="link">Зарегистрироваться</a>
+			</div>
+		</div>
+	</div>
+
+        <div class="modal js-reg-bg active">
+          <div class="modal__content">
+            <div class="modal__close js-reg-close"></div>
+            <h3 class="modal__title">Регистрация</h3>
+            <label class="modal__input modalBlock">
+                <span class="modalBlock__label">Адрес эл.почты</span>
+                <input class="modalBlock__input input js-reg-email" type="email" value="">
+            </label>
+            <label class="modal__input modalBlock">
+                <span class="modalBlock__label">Номер телефона</span>
+                <input class="modalBlock__input input js-reg-phone" type="text" value="">
+            </label>
+
+            <label class="modal__input modalBlock">
+                <span class="modalBlock__label">Пароль</span>
+                <input class="modalBlock__input input js-reg-password" type="password" value="">
+            </label>
+            <label class="modal__input modalBlock">
+                <span class="modalBlock__label">Подтвердите пароль</span>
+                <input class="modalBlock__input input js-reg-password2" type="password" value="">
+            </label>
+            <label class="modal__input modalBlock checkbox">
+                <input class="modalBlock__label js-agree" type="checkbox" checked>
+                <span class="checkmark"></span>
+                <span>Согласие на обработку <a href="#" target="_blank" class="link">персональных данных</a></span>
+            </label>
+            <label class="modal__input modalBlock checkbox">
+                <input class="modalBlock__label js-subscribe" type="checkbox" checked>
+                <span class="checkmark"></span>
+                <span>Подписаться на новости и акции</span>
+            </label>
+            <div class="modal__error js-req-error"></div>
+            <div class="modal__btns">
+                <button class="btn btnRose js-req">Зарегистрироваться</button>
+                <a href="javascript:void(0)" class="link js-login">Войти</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal js-auth-reset active">
+            <div class="modal__content">
+                <div class="modal__close js-reset-close"></div>
+                <h3 class="modal__title">Восстановление доступа</h3>
+                <label class="modal__input modalBlock">
+                    <span class="modalBlock__label">Адрес эл.почты</span>
+                    <input class="modalBlock__input input js-reset-email" type="text" value="">
+                </label>
+                <div class="modal__error js-reset-error"></div>
+                <div class="modal__success js-reset-success"></div>
+                <div class="modalBlock modal__btns">
+                    <button class="btn btnRose js-reset">Восстановить пароль</button>
+                </div>
+                <div class="modal__btns">
+                    <a href="javascript:void(0)" class="reg__auth-link link">Войти</a>
+                    <a href="javascript:void(0)" class="auth__reg-link link">Зарегистрироваться</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal params js-params-bg active">
+          <div class="modal__content params__content">
+            <div class="modal__close js-params-close"></div>
+            <h3 class="modal__title">Дополнительные параметры работы</h3>
+
+			<form class="paramsForm newOrder">				
+				<select class="newOrder__subject select">
+					<option value="0">Предмет</option>
+				</select>
+				<input class="newOrder__pages input" type="text" value="" placeholder="Количество страниц">
+				<select class="newOrder__original select">
+					<option value="0">Оригинальность</option>
+				</select>
+
+				<select class="newOrder__institution select">
+					<option value="0">Образовательное учреждение</option>
+				</select>
+				<select class="newOrder__plagiat select">
+					<option value="0">Проверка на антиплагиат</option>
+					<option value="1">antiplagiat.ru</option>
+				</select>
+				<label class="newOrder__report checkbox">
+					<input type="checkbox" value="">
+					<span class="checkmark"></span>
+					<span>Отчет</span>
+				</label>
+
+				<div class="newOrder__checkboxes">
+					<div class="checkboxes">
+						<label class="checkbox">
+							<input type="checkbox" value="">
+							<span class="checkmark"></span>
+							<span>Выступление к защите</span>
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" value="">
+							<span class="checkmark"></span>
+							<span>Нормоконтроль</span>
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" value="">
+							<span class="checkmark"></span>
+							<span>Рецензия</span>
+						</label>
+					</div>
+
+					<div class="checkboxes">
+						<label class="checkbox">
+							<input type="checkbox" value="">
+							<span class="checkmark"></span>
+							<span>Раздаточный материал</span>
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" value="">
+							<span class="checkmark"></span>
+							<span>Аннотация</span>
+						</label>
+					</div>
+				</div>
+
+				<textarea class="newOrder__message textarea" placeholder="Требования (необязательно)"></textarea>
+
+				<div class="newOrder__btn">
+					<button class="btn btnRose">Добавить</button>
+				</div>
+			</form>
+          </div>
+        </div>
+
+        <div class="modal paymant js-paymant-bg active">
+          <div class="modal__content paymant__content">
+            <div class="modal__close js-paymant-close"></div>
+            <h3 class="modal__title">Оплата</h3>
+			<label class="modal__input modalBlock">
+                <span class="modalBlock__label">Сумма к оплате:</span>
+                <div>
+                	<input name="sum" type="radio" value="">
+                	<span>Предоплата 50% - 500 руб.</span>
+                </div>
+                <div>
+                	<input name="sum" type="radio" value="">
+                	<span>Полная стоимость - 1000 руб.</span>
+                </div>
+            </label>
+            <label class="modal__input modalBlock">
+                <span class="modalBlock__label">Способ оплаты:</span>
+                <div>
+                	<input name="type" type="radio" value="">
+                	<span>Яндек.Деньги</span>
+                </div>
+                <div>
+                	<input name="type" type="radio" value="">
+                	<span>Банковская карта</span>
+                </div>            
+            </label>
+            <button class="btn btnRose">Оплатить</button>
+          </div>
+        </div>
+		
+		<div class="debugGrid">
+			<div>
+				<div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+
+		<header class="headerWrap">
+			<div class="wrapper">
+				<div class="header">
+					<div class="header__logo logo">
+						<div class="logo__item1 logoItem1">
+							<div class="logoItem1__item1">24</div>
+							<div class="logoItem1__item2">диплома</div>
+						</div>
+						<div class="logo__item2">
+							Сервис для консультаций студентов
+						</div>
+					</div>
+					<div class="header__menu">
+						<nav>
+							<ul class="menu">
+								<li class="menu__item">
+									<a href="#" class="menu__link">Услуги</a>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">О компании</a>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">Как мы работаем</a>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">Гарантии</a>
+								</li>
+								<li class="menu__item">
+									<a href="#" class="menu__link">Контакты</a>
+								</li>								
+							</ul>
+						</nav>
+					</div>
+					<div class="header__btns">
+						<button class="header__btn-enter btn btnBlue">Войти</button>
+						<button class="header__btn-write btn btnRose">Задать вопрос</button>
+					</div>
+					<div class="menu-mobile-toggle"></div>
+				</div>
+			</div>
+		</header>
+
+		<section class="bannerWrap">
+			<div class="wrapper">
+				<div class="banner">
+					<h1 class="banner__title">Помощь в написании учебных работ</h1>
+					<p class="banner__text">Мы поможем написать диплом, курсовую, контрольную с гарантией и без посредников</p>
+					<form class="banner__form">
+
+						<div class="newOrder">
+							<select class="newOrder__workType select">
+								<option value="0">Тип работы *</option>
+							</select>
+							<input class="newOrder__workTheme input" type="text" value="" placeholder="Тема работы *">
+							<input class="newOrder__workDate input" type="text" value="" placeholder="Срок сдачи *">
+
+							<input class="newOrder__email input" type="text" value="" placeholder="Электронная почта *">
+							<input class="newOrder__name input" type="text" value="" placeholder="ФИО *">
+							<input class="newOrder__files input" type="text" value="" placeholder="Прикрепить файлы">	
+
+							<div class="newOrder__params">Дополнительные параметры консультации</div>
+							<label class="newOrder__agreement checkbox">
+								<input type="checkbox" value="" checked>
+								<span class="checkmark"></span>
+								<span>Согласие на обработку <a href="#" class="link">персональных данных</a></span>
+							</label>
+							<div class="newOrder__btn">
+								<button class="btn btnRose">Заказать работу</button>	
+							</div>							
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<section class="servicesWrap">
+			<div class="wrapper">
+				<h2 class="servicesTitle">Консультации по работам</h2>
+				<div class="services">
+					<div class="services__item serviceItem">
+						<img class="serviceItem__icon" src="/img/diplom.svg">
+						<h3 class="serviceItem__title">Диплом</h3>
+						<p class="serviceItem__time">от 3-х дней</p>
+						<p class="serviceItem__price">от 3000 руб.</p>
+					</div>
+					<div class="services__item serviceItem">
+						<img class="serviceItem__icon" src="/img/trophy.svg">
+						<h3 class="serviceItem__title">Диссертация</h3>
+						<p class="serviceItem__time">от 3-х дней</p>
+						<p class="serviceItem__price">от 3000 руб.</p>
+					</div>
+					<div class="services__item serviceItem">
+						<img class="serviceItem__icon" src="/img/rocket.svg">
+						<h3 class="serviceItem__title">Курсовая работа</h3>
+						<p class="serviceItem__time">от 3-х дней</p>
+						<p class="serviceItem__price">от 3000 руб.</p>
+					</div>
+					<div class="services__item serviceItem">
+						<img class="serviceItem__icon" src="/img/owl.svg">
+						<h3 class="serviceItem__title">Контрольная работа</h3>
+						<p class="serviceItem__time">от 3-х дней</p>
+						<p class="serviceItem__price">от 3000 руб.</p>
+					</div>
+					<div class="services__item serviceItem">
+						<img class="serviceItem__icon" src="/img/diplom.svg">
+						<h3 class="serviceItem__title">Диплом</h3>
+						<p class="serviceItem__time">от 3-х дней</p>
+						<p class="serviceItem__price">от 3000 руб.</p>
+					</div>
+					<div class="services__item serviceItem">
+						<img class="serviceItem__icon" src="/img/trophy.svg">
+						<h3 class="serviceItem__title">Диссертация</h3>
+						<p class="serviceItem__time">от 3-х дней</p>
+						<p class="serviceItem__price">от 3000 руб.</p>
+					</div>
+					<div class="services__item serviceItem">
+						<img class="serviceItem__icon" src="/img/rocket.svg">
+						<h3 class="serviceItem__title">Курсовая работа</h3>
+						<p class="serviceItem__time">от 3-х дней</p>
+						<p class="serviceItem__price">от 3000 руб.</p>
+					</div>
+					<div class="services__item serviceItem">
+						<img class="serviceItem__icon" src="/img/owl.svg">
+						<h3 class="serviceItem__title">Контрольная работа</h3>
+						<p class="serviceItem__time">от 3-х дней</p>
+						<p class="serviceItem__price">от 3000 руб.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="aboutWrap">
+			<div class="wrapper">
+				<h2 class="aboutTitle">О компании</h2>
+				<div class="about">						
+					<div class="about__text">						
+						<h3>Помогаем студентам по всей России</h3>
+						<p>Наша цель — помочь Вам и всем учащимся получить высшее образование. Мы выступаем дополнительной силой, которая готова принять на себя часть дел и немного освободить Ваше личное время. Его можно уделить работе или хобби.</p>
+						<p>Если Вы хотите развиваться или уже сейчас строите карьеру, а может, решили получить степень по новой специальности — Вам точно к нам.</p>
+						<h3>Экономим Ваше время</h3>
+						<p>Мы занимаемся чтением методичек, написанием, редактированием, оформлением, спасая Вас от рутины. Это не часы, а целые дни — драгоценное время, которое утекает прямо сейчас. Ваша жизнь.</p>
+						<p>В свободное время Вы можете пойти на курсы, уделить время поиску работы и разнообразить личный список туристических открытий. Все это чуточку доступнее с учебными сервисами и мы рады, что помогаем делать студенческие годы действительно счастливыми.</p>
+					</div>
+					<div class="about__image">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="stagesWrap">
+			<div class="wrapper">
+				<h2 class="stagesTitle">Как мы работаем</h2>
+				<div class="stages">						
+					<div class="stages__item stageItem">
+						<div class="steps">
+							<div class="steps__number">1</div>
+							<div class="steps__title">шаг</div>
+						</div>
+						<div class="stageItem__step"></div>
+						<div class="stageItem__title">Заполнение онлайн-заявки</div>
+					</div>
+					<div class="stages__item stageItem">
+						<div class="steps">
+							<div class="steps__number">2</div>
+							<div class="steps__title">шаг</div>
+						</div>
+						<div class="stageItem__title">Расчет точной стоимости</div>
+					</div>
+					<div class="stages__item stageItem">
+						<div class="steps">
+							<div class="steps__number">3</div>
+							<div class="steps__title">шаг</div>
+						</div>
+						<div class="stageItem__title">Предоплата 50%</div>
+					</div>
+					<div class="stages__item stageItem">
+						<div class="steps">
+							<div class="steps__number">4</div>
+							<div class="steps__title">шаг</div>
+						</div>
+						<div class="stageItem__title">Выполнение услуг</div>
+					</div>
+					<div class="stages__item stageItem">
+						<div class="steps">
+							<div class="steps__number">5</div>
+							<div class="steps__title">шаг</div>
+						</div>
+						<div class="stageItem__title">Оплата остатка</div>
+					</div>
+					<div class="stages__item stageItem">
+						<div class="steps">
+							<div class="steps__number">6</div>
+							<div class="steps__title">шаг</div>
+						</div>
+						<div class="stageItem__title">Получение готовой работы</div>
+					</div>
+				</div>
+				<div class="stagesText">
+					В оговоренный срок Вы получите готовую работу высокого качества, соответствующую всем нормам и ГОСТам.
+				</div>
+				<div class="stagesBtn">
+					<button class="btn btnRose">
+						Заказать работу
+					</button>
+				</div>				
+			</div>
+		</section>
+
+		<section class="promisesWrap">
+			<div class="wrapper">
+				<h2 class="promisesTitle">Гарантии</h2>
+				<div class="promises">						
+					<div class="promises__item promisesItem">						
+						<div>
+							<h3 class="promisesItem__title">Гарантия высокого качества</h3>
+							<p>В нашей компании работают квалифицированные исполнители, обладающие огромным опытом. В штате компании 24диплома кандидаты и доктора наук, доценты, профессоры, преподаватели и прочие специалисты, которые активно занимаются научной и практической деятельностью. В своей работе мы используем только достоверные и актуальные источники с последующей трехступенчатой проверкой.</p>
+							<p>В своей работе мы используем только достоверные и актуальные источники с последующей трехступенчатой проверкой.</p>
+							<ul>
+								<li>Первый этап: все работы проходят проверку на сайте www.antiplagiat.ru или www.etxt.ru и показывают выбранный вами процент уникальности.</li>
+								<li>Второй этап: все работы проходят проверку экспертами.</li>
+								<li>Третий этап: все работы проходят через отдел технического контроля и проверяются на соответствие требованиям к работе.</li>
+							</ul>
+							<p>В результате вы получаете работу самого высокого качества!</p>
+						</div>
+						<div class="promisesItem__controls">
+							<div class="promisesItem__btns btns">
+								<div class="btns__btn btns__btn-active"></div>
+								<div class="btns__btn"></div>
+								<div class="btns__btn"></div>
+								<div class="btns__btn"></div>
+							</div>
+							<div class="promisesItem__arrows arrows">
+								<div class="arrowLeft"></div>
+								<div class="arrowRight"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="contactsWrap">
+			<div class="wrapper">
+				<h2 class="contactsTitle">Контакты</h2>
+				<div class="contacts">						
+					<div class="contacts__item contacts__item-email">
+						<img src="/img/mail.png" alt="">
+						<span>info@site.ru</span>
+					</div>
+					<div class="contacts__item contacts__item-phone">
+						<img src="/img/phone.png" alt="">
+						<span>+7 911 111-11-11</span>						
+					</div>
+					<div class="contacts__item contacts__item-vk">
+						<img src="/img/vk.png" alt="">
+						<span>vk.com/site</span>
+					</div>
+				</div>
+
+				<form class="contactsForm">
+					<h3 class="contactsForm__title">Напишите нам</h3>
+					<input class="contactsForm__name input" type="text" value="" placeholder="ФИО *">
+					<input class="contactsForm__email input" type="text" value="" placeholder="Электронная почта *">
+					<input class="contactsForm__phone input" type="text" value="" placeholder="Телефон">
+					<textarea class="contactsForm__message textarea" placeholder="Сообщение *"></textarea>
+					<label class="contactsForm__agreement checkbox">
+						<input type="checkbox" value="" checked>
+						<span class="checkmark"></span>
+						<span>Согласие на обработку <a href="#" class="link">персональных данных</a></span>
+					</label>
+					<div class="contactsForm__btn">
+						<button class="btn btnRose">Отправить</button>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<footer class="footerWrap">
+			<div class="wrapper">
+				<div class="footer">
+					<div class="footer__logo">
+						<div class="logo">
+							<div class="logo__item1 logoItem1">
+								<div class="logoItem1__item1">24</div>
+								<div class="logoItem1__item2">диплома</div>
+							</div>
+							<div class="logo__item2">
+								Сервис для консультаций студентов
+							</div>
+						</div>
+						<div class="footer__copyright">
+							&copy; 2019 site Все права защищены
+						</div>
+					</div>
+					<div class="footer__contacts">
+						<div class="footerTitle">Свяжитесь с нами:</div>
+						<div class="footer__phone">+7 911 111-11-11</div>
+						<div class="footer__email">info@site.ru</div>
+					</div>
+					<form class="footer__subscribe">
+						<div class="footerTitle">Подписаться на рассылку новостей:</div>
+						<div class="subscribe">
+							<input type="text" placeholder="Ваша электронная почта" class="subscribe__email input">
+							<button class="subscribe__btn btn btnRose">Подписаться</button>
+						</div>						
+					</form>
+				</div>
+			</div>
+		</footer>
+
+	</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+
+<div class='table-responsive'>
+    <table id='admin_table' class='table table-striped'>
+        <thead>
+        <tr>
+            <th>Название</th>
+            <th>Рейтинг</th>
+            <th>Управление</th>
+        </tr>
+        </thead>
+        <tbody class="sortable" data-table="steps">
+            {% for step in steps %}
+                {% set archived = '' %}
+                {% if step.archived == 1 %}
+                {% set archived = 'archived' %}
+                {% endif %}
+                <tr class="{{archived}} js-item" data-id="{{step.id}}">
+                    <td>
+                        <div>{{step.title}}</div>
+                    </td>
+                    <td>{{step.rate}}</td>
+                    <td class='change'>
+                        <a href='/admin/steps?act=edit&id={{step.id}}' title='Редактировать'>
+                            <img src="/images/admin/edit.png">
+                        </a>
+                        {% if (step.archived == 0) %}
+                            <a href='/admin/steps?act=add_to_achive&id={{step.id}}' title='Поместить шаг в архив'
+                               onclick="return confirm('Вы действительно хотите поместить этот шаг в архив?')">
+                                <img src="/images/admin/hidden.png">
+                            </a>
+                        {% else %}
+                            <a href='/admin/steps?act=remove_from_achive&id={{step.id}}' title='Восстановить шаг из архива'
+                               onclick="return confirm('Вы действительно хотите восстановить этот шаг из архива?')">
+                                <img src="/images/admin/show.png">
+                            </a>
+                        {% endif %}
+
+                        <a href='/admin/steps?act=delete&id={{step.id}}' title='Удалить'
+                           onclick="return confirm('Вы действительно хотите удалить этот шаг? Шаг будет удалена без возможности восстановления')">
+                            <img src="/images/admin/delete.png">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

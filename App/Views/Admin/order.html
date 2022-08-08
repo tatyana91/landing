@@ -1,0 +1,283 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+
+<div class="js-edit-order" data-order_id="{{order.id}}">
+    <span style="margin-right: 10px;">Статус:</span>
+    <select class="select" name="status" data-field="status" style="width: auto;">
+        {% for ref_status in ref_statuses %}
+        <option value="{{ref_status.id}}" {{(order.status == ref_status.id ? 'selected' : '')}}>{{ref_status.name}}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="order-block">
+    <h4>Общая информация</h4>
+    <table class='table table-striped'>
+        <thead>
+        <tr>
+            <th>№п/п</th>
+            <th>Дата</th>
+            <th>Пользователь</th>
+            <th>Телефон</th>
+            <th>Эл. почта</th>
+            <th>Стоимость</th>
+            <th>Оплачено</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="js-edit-order" data-order_id="{{order.id}}">
+            <td>{{order.id}}</td>
+            <td>{{order.time|date("d.m.Y H:i")}}</td>
+            <td>
+                <input class="input" type="text" data-field="fio" value="{{order.fio}}">
+            </td>
+            <td>
+                <input class="input" type="text" data-field="phone" value="{{order.phone}}">
+            </td>
+            <td>
+                <input type="text" class="input" data-field="email" value="{{order.email}}">
+            </td>
+            <td>
+                <input type="text" class="input" data-field="total_cost" value="{{order.total_cost}}" style="width: 85%;">
+                <span> руб.</span>
+            </td>
+            <td>
+                <span>{{order.payment_sum}} руб.</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="order-block">
+    <h4>Информация о работе</h4>
+    <table class='table table-striped'>
+        <thead>
+        <tr>
+            <th>Тип работы</th>
+            <th>Тема работы</th>
+            <th>Предмет</th>
+            <th>Срок сдачи</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="js-edit-order" data-order_id="{{order.id}}">
+            <td>
+                <select class="select" data-field="work_type">
+                    <option value="0">не выбрано</option>
+                    {% for ref_service in order_params.services %}
+                        <option value="{{ref_service.id}}" {{(ref_service.id == order.work_type) ? 'selected' : ''}}>{{ref_service.title}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <input class="input" type="text" data-field="work_theme" value="{{order.work_theme}}">
+            </td>
+            <td style="position: relative;">
+                <input class="input js-subject" type="text" data-field="work_subject" value="{{order.work_subject}}">
+                <div class="subjectsVariants js-subject-items"></div>
+            </td>
+            <td>
+                <input class="input" type="date" data-field="work_deadline" value="{{order.work_deadline|date('Y-m-d')}}">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table class='table table-striped'>
+        <thead>
+        <tr>
+            <th>Количество страниц</th>
+            <th>Оригинальность</th>
+            <th>Учебное заведение</th>
+            <th>Проверка на антиплагиат</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="js-edit-order" data-order_id="{{order.id}}">
+            <td>
+                <input class="input" type="text" data-field="work_count_page" value="{{order.work_count_page}}">
+            </td>
+            <td>
+                <select class="select" data-field="work_original">
+                    <option value="0">не выбрано</option>
+                    {% for ref_original_item in order_params.original %}
+                        <option value="{{ref_original_item.id}}" {{(ref_original_item.id == order.work_original) ? 'selected' : ''}}>
+                            {{ref_original_item.name}}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <input class="input" type="text" data-field="work_vuz" value="{{order.work_vuz}}">
+            </td>
+            <td>
+                <select class="select" data-field="work_antiplagiat">
+                    <option value="0">не выбрано</option>
+                    {% for ref_antiplagiat_item in order_params.antiplagiat %}
+                        <option value="{{ref_antiplagiat_item.id}}"
+                                {{(ref_antiplagiat_item.id == order.work_plagiat) ? 'selected' : ''}}>
+                            {{ref_antiplagiat_item.name}}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table class='table table-striped'>
+        <thead>
+        <tr>
+            <th>Ссылка на ресурс СДО</th>
+            <th>Логин СДО</th>
+            <th>Пароль СДО</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="js-edit-order" data-order_id="{{order.id}}">
+            <td>
+                <input class="input" type="text" data-field="work_url" value="{{order.work_url}}">
+            </td>
+            <td>
+                <input class="input" type="text" data-field="work_login" value="{{order.work_login}}">
+            </td>
+            <td>
+                <input class="input" type="text" data-field="work_password" value="{{order.work_password}}">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table class='table table-striped'>
+        <thead>
+        <tr>
+            <th>Тип диссертации</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="js-edit-order" data-order_id="{{order.id}}">
+            <td>
+                <div class="radioBtns">
+                    <label class="radio">
+                        <input type="radio" data-field="work_dis_type" name="work_dis_type" value="магистерская"
+                            {{ (order.work_dis_type == 'магистерская') ? 'checked' : '' }}>
+                        <span class="radiomark"></span>
+                        <span>магистерская</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" data-field="work_dis_type" name="work_dis_type" value="кандидатская"
+                               {{ (order.work_dis_type == 'кандидатская') ? 'checked' : '' }}>
+                        <span class="radiomark"></span>
+                        <span>кандидатская</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" data-field="work_dis_type" name="work_dis_type" value="докторская"
+                               {{ (order.work_dis_type == 'докторская') ? 'checked' : '' }}>
+                        <span class="radiomark"></span>
+                        <span>докторская</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" data-field="work_dis_type" name="work_dis_type" value="монография"
+                               {{ (order.work_dis_type == 'монография') ? 'checked' : '' }}>
+                        <span class="radiomark"></span>
+                        <span>монография</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" data-field="work_dis_type" name="work_dis_type" value="научная работа"
+                               {{ (order.work_dis_type == 'научная работа') ? 'checked' : '' }}>
+                        <span class="radiomark"></span>
+                        <span>научная работа</span>
+                    </label>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table class='table table-striped'>
+        <tr class="js-edit-order" data-order_id="{{order.id}}">
+            <td>
+                <div class="checkboxes">
+                    <label class="checkbox">
+                        <input type="checkbox" value="" data-field="work_vystuplenie"
+                               {{ (order.work_vystuplenie == '1') ? 'checked' : '' }}>
+                        <span class="checkmark"></span>
+                        <span>Текст выступления к защите</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="" data-field="work_presentation"
+                               {{ (order.work_presentation == '1') ? 'checked' : '' }}>
+                        <span class="checkmark"></span>
+                        <span>Презентация</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="" data-field="work_razdat"
+                               {{ (order.work_razdat == '1') ? 'checked' : '' }}>
+                        <span class="checkmark"></span>
+                        <span>Раздаточный материал</span>
+                    </label>
+                </div>
+            </td>
+        </tr>
+    </table>
+    {% if (order.work_requirements) %}
+        <table class='table table-striped'>
+            <thead>
+            <tr>
+                <th>Требования к работе</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="js-edit-order" data-order_id="{{order.id}}">
+                <td>{{order.work_requirements}}</td>
+            </tr>
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+
+<div class="order-block">
+    <h4>Файлы заказа</h4>
+    {% if (order.files|length > 0) %}
+        <div class="orderDetails__value">
+            {% for files in order.files %}
+                <a href="/files/orders/{{order.id}}/{{files.name}}" class="link_dark" target="_blank">{{files.original_name}}</a><br>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<div class="order-block">
+    <h4>Сообщения по заказу</h4>
+    <div class="profileBlock__item messagesWrap">
+        <div class="js-messages">
+            {% if order.messages|length > 0 %}
+            <div class="messages">
+                {% for message in order.messages %}
+                {% include("/Lk/inc/message.html") %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="js-file-upload" data-show="full" data-error_class="js-message-error">
+            <div class="sendMessage">
+                <div class="sendMessage__input fileUpload">
+                    <div class="fileUpload__btn-select"></div>
+                    <input name="work_files" class="fileUpload__input js-files-input js-add-files" type="file" multiple="">
+                </div>
+
+                <textarea class="sendMessage__textarea textarea js-order-message" name="message" placeholder="Напишите сообщение..."></textarea>
+
+                <button class="btn btnRose sendMessage__btn js-send-order-message" data-id="{{order.id}}">Отправить</button>
+
+                <div class="sendMessage__filesLabel fileIcons js-files-label"></div>
+
+                <div class="sendMessage__error error js-message-error"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+RewriteEngine On
+
+#Redirect 301 /poleznaya_informaciya http://site.ru/lk/
+RewriteRule ^/poleznaya_informaciya/diplom_na_zakaz$ /yslygi/diplom_na_zakaz [R=301,L]
+
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME}  !-f
+RewriteCond %{REQUEST_FILENAME}  !-d
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]

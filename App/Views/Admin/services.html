@@ -1,0 +1,66 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+
+<div class='table-responsive'>
+    <table id='admin_table' class='table table-striped'>
+        <thead>
+        <tr>
+            <th>Лого</th>
+            <th>Название</th>
+            <th>Страница</th>
+            <th>Рейтинг</th>
+            <th>Управление</th>
+        </tr>
+        </thead>
+        <tbody class="sortable" data-table="services">
+            {% for service in services %}
+                {% set archived = '' %}
+                {% if brand.archived == 1 %}
+                    {% set archived = 'archived' %}
+                {% endif %}
+                <tr class="{{archived}} js-item" data-id="{{service.id}}">
+                    <td>
+                        {% if (service.path) %}
+                            <img src='/images/services/{{service.path}}' style='max-width: 80px'/>
+                        {% endif %}
+                    </td>
+                    <td>{{service.title}}</td>
+                    <td>
+                        {% if (service.page_id > 0) %}
+                            <a href="/{{pages[service.page_id].full_url}}" target="_blank">
+                                {{pages[service.page_id].full_title}}
+                            </a>
+                        {% endif %}
+                    </td>
+                    <td>{{service.rate}}</td>
+                    <td class='change'>
+                        <a href='/admin/services?act=edit&id={{service.id}}' title='Редактировать'>
+                            <img src="/images/admin/edit.png">
+                        </a>
+                        {% if (brand.archived == 0) %}
+                            <a href='/admin/services?act=add_to_achive&id={{service.id}}' title='Поместить в архив'
+                               onclick="return confirm('Вы действительно хотите поместить эту услугу в архив?')">
+                                <img src="/images/admin/hidden.png">
+                            </a>
+                        {% else %}
+                            <a href='/admin/services?act=remove_from_achive&id={{service.id}}' title='Восстановить из архива'
+                               onclick="return confirm('Вы действительно хотите восстановить эту услугу из архива?')">
+                                <img src="/images/admin/show.png">
+                            </a>
+                        {% endif %}
+                        <a href='/admin/services?act=delete&id={{service.id}}' title='Удалить'
+                           onclick="return confirm('Вы действительно хотите удалить эту услугу? Услуга будет удален без возможности восстановления')">
+                            <img src="/images/admin/delete.png">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "/base.html" %}
+
+{% block header_menu %}
+    {% include("/Lk/inc/header_menu.html") %}
+{% endblock %}
+
+{% block mobile_header_menu %}
+{% include("/Lk/inc/mobile_header_menu.html") %}
+{% endblock %}
+
+{% block header_btns %}
+    {% include("/Lk/inc/header_btns.html") %}
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <div class="wrapper">
+            <div class="profileBlock">
+                <h1 class="titleLevel1 profileBlock__title">Список заказов</h1>
+                <form class="filter">
+                    <span class="filter__title">Фильтр:</span>
+                    <select name="status" class="select filter__select" onchange="this.form.submit()">
+                        <option value="0">все заказы</option>
+                        {% for status in order_params.statuses %}
+                            {% set selected = (search_status == status.id) ? 'selected' : '' %}
+                            <option value="{{status.id}}" {{selected}}>{{status.name}}</option>
+                        {% endfor %}
+                    </select>
+                </form>
+                {% for order in orders %}
+                    <div class="profileBlock__item lkOrderInfo">
+                        <div class="lkOrderInfo__data">
+                            <div class="lkOrderInfo__item">
+                                <div class="lkOrderInfo__number">№ {{order.id}}</div>
+                                <div class="lkOrderInfo__date">{{order.time|date("d.m.Y H:i")}}</div>
+                                <div class="lkOrderInfo__status">
+                                    <span class="status" style="background: {{order.status_bgcolor}}">{{order.status_name}}</span>
+                                </div>
+                                {% if (order.count_messages) %}
+                                    <div class="orderMessagesCount">
+                                        <span class="orderMessagesCount__count">{{order.count_messages}}</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="lkOrderInfo__title">{{order.work_theme}}</div>
+                            <div class="lkOrderInfo__item">
+                                <span class="lkOrderInfo__type">{{order.work_type_title}}</span>
+                                <span class="lkOrderInfo__pages">{{order.work_count_page}}</span>
+                                <span class="lkOrderInfo__time"></span>
+                            </div>
+                            <a href="/lk/moi_zakazy?id={{order.id}}" class="btn btnBlue orderDetailsBtn">Подробнее</a>
+                            {% if (order.status == 1) %}
+                                <div class="btn btnBlue js-update-order-status" data-id="{{order.id}}" data-status="7">Отменить заказ</div>
+                            {% elseif (order.status == 7) %}
+                                <div class="btn btnBlue js-update-order-status" data-id="{{order.id}}" data-status="1">Восстановить заказ</div>
+                            {% endif %}
+                        </div>
+                        <div class="lkOrderInfo__price">
+                            <div class="orderPriceItem">
+                                <span>Предоплата 50%</span>
+                                <span>{{ order.total_cost / 2 }} руб.</span>
+                            </div>
+                            <div class="orderPriceItem lkOrderInfo__totalSum">
+                                <span>Стоимость заказа</span>
+                                <span>{{ (order.total_cost > 0) ? order.total_cost ~ " руб." : "" }}</span>
+                            </div>
+                            {% if (order.payment_sum > 0) %}
+                                <div class="orderPriceItem lkOrderInfo__paymentInfo">
+                                    <span>Оплачено</span>
+                                    <span>{{order.payment_sum}} руб.</span>
+                                </div>
+                            {% endif %}
+
+                            {% set disabled = 'btnRose_disabled' %}
+                            {% if ((order.status == 3 or order.status == 4 or order.status == 5) and order.total_cost > 0 and order.total_cost > order.payment_sum) %}
+                                {% set disabled = 'js-payment-popup' %}
+                            {% endif %}
+                            <button class="btn btnRose {{disabled}}" data-id="{{order.id}}">Оплатить</button>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="profileBlock__item">
+                        <span>Заказы не найдены</span>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,9 @@
+{
+    "require": {
+        "twig/twig": "^2.10",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "ext-gd": "*",
+        "twig/extensions": "^1.5"
+    }
+}

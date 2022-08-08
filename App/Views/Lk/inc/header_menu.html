@@ -1,0 +1,15 @@
+<div class="header__menu">
+    <nav>
+        <ul class="menu">
+            {% for header_page in header_pages %}
+            <li class="menu__item">
+                {% set active = "" %}
+                {% if (page.full_url == header_page.full_url) %}
+                    {% set active = "menu__link_active" %}
+                {% endif %}
+                <a href="/{{header_page.full_url}}" class="menu__link {{active}}">{{header_page.title_menu}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</div>

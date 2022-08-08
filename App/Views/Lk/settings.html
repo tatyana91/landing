@@ -1,0 +1,102 @@
+{% extends "/base.html" %}
+
+{% block header_menu %}
+    {% include("/Lk/inc/header_menu.html") %}
+{% endblock %}
+
+{% block mobile_header_menu %}
+{% include("/Lk/inc/mobile_header_menu.html") %}
+{% endblock %}
+
+{% block header_btns %}
+    {% include("/Lk/inc/header_btns.html") %}
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <div class="wrapper">
+            <div class="profileBlock">
+                <h1 class="titleLevel1 profileBlock__title">Персональные данные</h1>
+
+                <div class="profileBlock__item">
+                    <div class="lk__contacts">
+                        <div class="lk__personal lkPersonal">
+                            <div class="lkPersonal__item">
+                                <input class="input" name="fio" type="text" value="{{user.fio}}" placeholder="ФИО">
+                            </div>
+                            <div class="lkPersonal__item">
+                                <input class="input" name="city" type="text" value="{{user.city}}" placeholder="Город">
+                            </div>
+                            <div class="lkPersonal__item">
+                                <input class="input" name="vuz" type="text" value="{{user.vuz}}" placeholder="Учебное заведение">
+                            </div>
+                            <div class="lkPersonal__item">
+                                <input class="input" name="faculty" type="text" value="{{user.faculty}}" placeholder="Факультет">
+                            </div>
+                            <div class="lkPersonal__item">
+                                <input class="input" name="specialty" type="text" value="{{user.specialty}}" placeholder="Специальность">
+                            </div>
+                            <div class="lkPersonal__item">
+                                <input class="input" name="course" type="text" value="{{user.course}}" placeholder="Курс">
+                            </div>
+
+                            <div class="error js-error"></div>
+                            <div class="success js-success"></div>
+
+                            <div class="profileBlock__btn">
+                                <button class="btn btnRose js-save-lk-personal">Сохранить изменения</button>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="lk__photo lk__photo_edit">
+                            <img src="/images/profile.svg">
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="profileBlock">
+                <h1 class="titleLevel1 profileBlock__title">Контактные данные</h1>
+                <div class="profileBlock__item lkContacts">
+                    <div class="lkContacts__item" style="display: none">
+                        <input class="input" name="phone" type="text" value="{{user.phone}}" placeholder="Телефон">
+                    </div>
+                    <label class="lkContacts__item checkbox">
+                        <input type="checkbox" value="" name="subscribe" {{(user.subscribe == 1) ? 'checked' : ''}}>
+                        <span class="checkmark"></span>
+                        <span>подписаться на рассылку новостей и акций</span>
+                    </label>
+
+                    <div class="error js-error"></div>
+                    <div class="success js-success"></div>
+
+                    <div class="profileBlock__btn">
+                        <button class="btn btnRose js-save-lk-contact">Сохранить изменения</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profileBlock">
+                <h1 class="titleLevel1 profileBlock__title">Смена пароля</h1>
+                <div class="profileBlock__item lkPassword">
+                    <div class="lkPassword__item">
+                        <input class="input" name="old_password" type="password" value="" placeholder="Старый пароль *">
+                    </div>
+                    <div class="lkPassword__item">
+                        <input class="input" name="new_password" type="password" value="" placeholder="Новый пароль *">
+                    </div>
+                    <div class="lkPassword__item">
+                        <input class="input" name="new_password2" type="password" value="" placeholder="Подтверждение нового пароля *">
+                    </div>
+
+                    <div class="error js-error"></div>
+                    <div class="success js-success"></div>
+
+                    <div class="profileBlock__btn">
+                        <button class="btn btnRose js-lk-change-password">Сохранить изменения</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+
+<div class="table-responsive">
+    <table class='table table-striped table_head'>
+       <thead>
+           <tr>
+               <th style='width: 100px'>Пункт меню</th>
+               <th>Название</th>
+               <th>Название меню</th>
+               <th>Ссылка</th>
+               <th>Рейтинг</th>
+               <th>Управление</th>
+           </tr>
+       </thead>
+        <tbody class="sortable" data-table="pages">
+            {% for page in pages %}
+                {% set archived = '' %}
+                {% if page.archived == 1 %}
+                    {% set archived = 'archived' %}
+                {% endif %}
+                <tr class="{{archived}} js-item" data-id="{{page.id}}">
+                    <td>
+                        {% if page.show_menu == 1 %}
+                        <img src='/images/admin/mark.png' style='width: 20px;'>
+                        {% endif %}
+                    </td>
+                    <td>{{page.full_title}}</td>
+                    <td>{{page.title_menu}}</td>
+                    <td>
+                        {% if (page.parent_id != 4) %}
+                            {% set url = "/" ~ page.full_url %}
+                            <a href="{{url}}" target="_blank" title="Открыть на сайте">{{url}}</a>
+                        {% endif %}
+                    </td>
+                    <td>{{page.rate}}</td>
+                    <td class='change'>
+                        <a href='/admin/pages?act=edit&id={{page.id}}' title='Редактировать'>
+                            <img src="/images/admin/edit.png">
+                        </a>
+
+                        {% if (page.archived == 0) %}
+                        <a href='/admin/pages?act=add_to_achive&id={{page.id}}' title='Поместить страницу в архив'
+                           onclick="return confirm('Вы действительно хотите поместить эту страницу в архив?')">
+                            <img src="/images/admin/hidden.png">
+                        </a>
+                        {% else %}
+                        <a href='/admin/pages?act=remove_from_achive&id={{page.id}}' title='Восстановить страницу из архива'
+                           onclick="return confirm('Вы действительно хотите восстановить эту страницу из архива?')">
+                            <img src="/images/admin/show.png">
+                        </a>
+                        {% endif %}
+
+                        <a href='/admin/pages?act=delete&id={{page.id}}' title='Удалить'
+                           onclick="return confirm('Вы действительно хотите удалить эту страницу? Страница будет удалена без возможности восстановления')">
+                            <img src="/images/admin/delete.png">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

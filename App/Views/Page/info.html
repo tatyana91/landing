@@ -1,0 +1,21 @@
+{% extends "/base.html" %}
+
+{% set page_title = page.title %}
+{% set page_breadcrumbs = page.breadcrumbs %}
+
+{% block page_content %}
+    <h1 class="titleLevel1 profileBlock__title">{{page.title}}</h1>
+
+    {% if (page.text|raw) %}
+        <div class="profileBlock__item tinymceContent">{{page.text|raw}}</div>
+    {% endif %}
+
+    <div class="profileBlock__item tinymceContent">
+        {% for article in page.articles %}
+        <div class="articles">
+            <a class="articles__title" href="{{article.full_url}}">{{article.title}}</a>
+            <div class="articles__desc">{{article.description}}</div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

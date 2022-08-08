@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        {% block title %}
+        <title>{{page.seo.title}}</title>
+        <meta name="Keywords" content="{{page.seo.keywords}}">
+        <meta name="Description" content="{{page.seo.description}}">
+        {% endblock %}
+
+        <link rel="stylesheet" href="/css/main.css?{{date().timestamp}}">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <link rel="stylesheet" href="/css/slick.css">
+        <link rel="stylesheet" href="/css/slick-theme.css">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/images/favicons/site.webmanifest">
+        <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header_fixed">
+            <div class="headerWrap">
+                <div class="wrapper">
+                    <div class="header">
+                        <a href="/" class="logo">
+                            <img src="/images/logo_book.svg" class="logo__icon" alt="Сервис для студентов" width="65" height="47">
+                            <span class="logoTitle">
+                            <span class="logoTitle__title">24</span>
+                            <span class="logoTitle__title2">диплома</span>
+                        </span>
+                            <span class="logo__subtitle">
+                            Сервис для студентов
+                        </span>
+                        </a>
+
+                        {% block header_menu %}
+                        <div class="header__menu">
+                            <nav>
+                                <ul class="menu">
+                                    {% for header_page in header_pages %}
+                                    <li class="menu__item">
+                                        <a href="#{{header_page.url}}" class="menu__link">{{header_page.title_menu}}</a>
+                                    </li>
+                                    {% endfor %}
+                                    <li class="menu__item">
+                                        <a href="https://wa.me/79516605146" target="_blank" class="menu__link whatsApp">
+                                            <img src="/images/whatsapp.png" alt="Написать в WhatsApp">
+                                            <span>Написать в WhatsApp</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        {% endblock %}
+
+                        {% block header_btns %}
+                        <div class="header__btns">
+                            <a class="header__btn-write btn btnRose" href="#kontakty">Задать вопрос</a>
+                        </div>
+                        {% endblock %}
+
+                        <a href="https://wa.me/79516605146" target="_blank" class="whatsAppMob">
+                            <img src="/images/whatsapp2.png" alt="Написать в WhatsApp">
+                        </a>
+
+                        <div class="menu-mobile-toggle"></div>
+
+                        <div class="mobile-menu">
+                            <div class="mobile-menu__close"></div>
+
+                            <div class="mobile-menu__block">
+                            </div>
+                            <div class="mobile-menu__block">
+                                {% block mobile_header_menu %}
+                                <a href="/" class="mobile-menu__link">Главная страница</a>
+                                {% for header_page in header_pages %}
+                                <a href="#{{header_page.url}}" class="mobile-menu__link">{{header_page.title_menu}}</a>
+                                {% endfor %}
+                                {% endblock %}
+                            </div>
+                            <div class="mobile-menu__block mobileContacts">
+                                <a href="https://wa.me/79516605146" target="_blank" class="link mobileContacts__item whatsApp">
+                                    <img src="/images/whatsapp.png" alt="Написать в WhatsApp">
+                                    <span>Написать в WhatsApp</span>
+                                </a>
+                                <a class="link mobileContacts__item" href="mailto:{{settings.mail}}">{{settings.mail}}</a>
+                                <a class="link mobileContacts__item" href="tel:{{settings.phone|replace({' ': ''})}}">{{settings.phone}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        {% block content %}
+        <section class="content">
+            <div class="wrapper">
+                <div class="profileBlock">
+                    {% embed "/inc/breadcrumbs.html" %}
+                    {% endembed %}
+
+                    {% block page_content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </section>
+        {% endblock %}
+
+        <footer class="footerWrap">
+            <div class="wrapper">
+                <div class="footer">
+                    <div class="footer__logo">
+                        <a href="/" class="logo">
+                            <img src="/images/logo_book2.svg" class="logo__icon" alt="Сервис для студентов" width="65" height="47">
+                            <span class="logoTitle">
+                                <span class="logoTitle__title">24</span>
+                                <span class="logoTitle__title2">диплома</span>
+                            </span>
+                                <span class="logo__subtitle">
+                                Сервис для студентов
+                            </span>
+                        </a>
+                        <div class="footer__copyright">
+                            &copy;{{settings.copyright|replace({'%year%': "now"|date('Y')})}}
+                        </div>
+                    </div>
+                    <div class="footer__contacts">
+                        <div class="footerTitle">Свяжитесь с нами:</div>
+                        <div class="footer__email">
+                            <a href="https://wa.me/79516605146" target="_blank" class="whatsApp" style="color: #fff;" target="_blank">
+                                <img src="/images/whatsapp.png">
+                                <span>Написать в WhatsApp</span>
+                            </a>
+                        </div>
+                        <div class="footer__email">
+                            <a href="mailto:{{settings.mail}}" style="color: #fff; text-decoration: none">{{settings.mail}}</a>
+                        </div>
+                    </div>
+                    <div class="footer__contacts">
+                        <div class="footerTitle">Посетителям:</div>
+                        <!--<div class="footer__email">
+                            {% if (params.auth) %}
+                                <a href="/lk" style="color: #fff; text-decoration: none">Личный кабинет</a>
+                            {% else %}
+                                <a href="#" style="color: #fff; text-decoration: none" class="js-auth-popup">Вход/регистрация</a>
+                            {% endif %}
+                        </div>-->
+                        <div class="footer__email">
+                            <a href="/poleznaya_informaciya" style="color: #fff; text-decoration: none">Полезная информация</a>
+                        </div>
+                        <div class="footer__email">
+                            <a href="/politika_konfidencialnosti" style="color: #fff; text-decoration: none">Политика конфиденциальности</a>
+                        </div>
+                        <div class="footer__email">
+                            <a href="/polzovatelskoe_soglashenie" style="color: #fff; text-decoration: none">Пользовательское соглашение</a>
+                        </div>
+                        <div class="footer__email">
+                            <a href="/oferta" style="color: #fff; text-decoration: none">Оферта</a>
+                        </div>
+                    </div>
+                    <div class="footer__subscribe">
+                        <div class="footerTitle">Подписаться на рассылку новостей:</div>
+                        <div class="subscribe">
+                            <input type="text" placeholder="Ваша электронная почта" class="subscribe__email input">
+                            <button class="subscribe__btn btn btnRose js-footer-subscribe">Подписаться</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="btn btnBlue btnUp js-btn-up">Наверх</div>
+
+        {% if (params.show_policy) %}
+        <div class="policy-info js-policy-info">
+            <div class="policy-info__text">Мы используем файлы cookie. Продолжив работу с сайтом, вы соглашаетесь с
+                <a href="/politika_konfidencialnosti" target="_blank">Политикой конфиденциальности</a>.
+            </div>
+            <span class="policy-info__close close js-close-policy"></span>
+        </div>
+        {% endif %}
+
+        {% block modal %}
+            <div class="modal auth js-auth-bg">
+                <div class="modal__content">
+                    <div class="modal__close js-auth-close"></div>
+                    <h3 class="modal__title">Вход</h3>
+                    <label class="modal__input modalBlock">
+                        <span class="modalBlock__label">Адрес эл.почты:</span>
+                        <input class="modalBlock__input input js-login-email" type="text" value="">
+                    </label>
+                    <label class="modal__input modalBlock">
+                        <span class="modalBlock__label">Пароль:</span>
+                        <input class="modalBlock__input input js-login-password" type="password" value="">
+                    </label>
+                    <div class="modal__error js-login-error"></div>
+                    <a href="javascript:void(0)" class="modal__reset-link link">Забыли пароль?</a>
+                    <div class="modal__btns">
+                        <button class="btn btnRose js-login">Войти</button>
+                        <a href="javascript:void(0)" class="modal__reg-link link">Зарегистрироваться</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal reg js-reg-bg">
+                <div class="modal__content">
+                    <div class="modal__close js-reg-close"></div>
+                    <h3 class="modal__title">Регистрация</h3>
+                    <div class="js-reg-form">
+                        <label class="modal__input modalBlock">
+                            <span class="modalBlock__label">Адрес эл.почты *</span>
+                            <input class="modalBlock__input input js-reg-email" type="email" value="">
+                        </label>
+                        <label class="modal__input modalBlock">
+                            <span class="modalBlock__label">ФИО *</span>
+                            <input class="modalBlock__input input js-reg-fio" type="text" value="">
+                        </label>
+                        <label class="modal__input modalBlock" style="display: none">
+                            <span class="modalBlock__label">Номер телефона</span>
+                            <input class="modalBlock__input input js-reg-phone" type="text" value="">
+                        </label>
+                        <label class="modal__input modalBlock">
+                            <span class="modalBlock__label">Пароль *</span>
+                            <input class="modalBlock__input input js-reg-password" type="password" value="">
+                        </label>
+                        <label class="modal__input modalBlock">
+                            <span class="modalBlock__label">Подтвердите пароль *</span>
+                            <input class="modalBlock__input input js-reg-password2" type="password" value="">
+                        </label>
+                        <label class="modal__input modalBlock checkbox">
+                            <input class="modalBlock__label js-agree" type="checkbox" checked>
+                            <span class="checkmark"></span>
+                            <span>Согласие на обработку <a href="/politika_konfidencialnosti" target="_blank" class="link">персональных данных</a></span>
+                        </label>
+                        <label class="modal__input modalBlock checkbox">
+                            <input class="modalBlock__label js-subscribe" type="checkbox" checked>
+                            <span class="checkmark"></span>
+                            <span>Подписаться на новости и акции</span>
+                        </label>
+                        <div class="modal__error js-req-error"></div>
+                        <div class="modal__btns">
+                            <button class="btn btnRose js-req">Зарегистрироваться</button>
+                            <a href="javascript:void(0)" class="modal__auth-link link">Войти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal reset js-auth-reset">
+                <div class="modal__content">
+                    <div class="modal__close js-reset-close"></div>
+                    <h3 class="modal__title">Восстановление доступа</h3>
+                    <label class="modal__input modalBlock">
+                        <span class="modalBlock__label">Адрес эл.почты *</span>
+                        <input class="modalBlock__input input js-reset-email" type="text" value="">
+                    </label>
+                    <div class="modal__error js-reset-error"></div>
+                    <div class="modal__success js-reset-success"></div>
+                    <div class="modalBlock modal__btns">
+                        <button class="btn btnRose js-reset">Восстановить пароль</button>
+                        <a href="javascript:void(0)" class="modal__auth-link link">Войти</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal result js-result">
+                <div class="modal__content">
+                    <div class="modal__close js-result-close"></div>
+                    <div class="modal__success js-result-success" style="color: inherit"></div>
+                </div>
+            </div>
+
+            {% include("/Lk/inc/payment.html") %}
+        {% endblock %}
+
+        <script src='/js/jquery-3.2.1.min.js'></script>
+        <script src="/js/jquery-ui.min.js"></script>
+        <script src="/js/datepicker-ru.js"></script>
+        <script src='/js/slick.min.js'></script>
+        <script src='/js/scripts.js?{{date().timestamp}}'></script>
+        <script src='/js/jquery.maskedinput.js'></script>
+    </body>
+</html>

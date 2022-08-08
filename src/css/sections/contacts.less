@@ -1,0 +1,151 @@
+.contactsTitle {
+	margin: 40px 0 30px 0;
+}
+
+.contacts {
+	&:extend(.row-flex);
+	margin-bottom: 20px;
+    justify-content: center;
+
+	&__item {
+		&:extend(.col);
+		.size(4);
+
+		background-color: @color_lite_gray;
+		border-radius: @border_radius * 2;
+		padding: 30px;
+		text-align: center;
+		text-decoration: underline;
+		font-size: 20px;
+
+		display: flex;
+    	justify-content: center;
+    	align-items: center;
+
+    	img {
+    		margin-right: 24px;
+			width: 32px;
+			height: auto;
+    	}
+
+		a {
+			color: @color_dark_gray;
+		}
+	}	
+}
+
+.contactsForm {
+	padding: 40px 75px;
+	background: @color_lite_gray;
+	border-radius: @border_radius * 2;
+	margin: 0;
+	margin-bottom: 60px;
+
+	&:extend(.row-flex);
+
+	> * {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	&__title {
+		&:extend(.col);
+		.size(12);
+		margin-bottom: 25px;
+	}
+
+	&__name, &__email {
+		&:extend(.col);
+		.size(6);
+	}
+
+	&__message {
+		&:extend(.col);
+		.size(12);
+
+		width: 100%;
+		min-height: 80px;
+		height: 110px;			
+	}
+
+	&__agreement {
+		&:extend(.col);
+		.size(9);
+		align-self: center;
+	}
+
+	&__btn {
+		&:extend(.col);
+		.size(3);
+		text-align: right;
+	}
+
+	&__error {
+		&:extend(.col);
+		.size(12);
+		margin-top: 0;
+		margin-bottom: 0;
+		color: @color_error;
+		font-weight: bold;
+	}
+
+	&__success {
+		&:extend(.col);
+		.size(12);
+		margin-top: 0;
+		margin-bottom: 0;
+		color: @color_success;
+		font-weight: bold;
+	}
+}
+
+.md-block({
+	.contacts {
+		&__item {
+			padding: 15px;
+			display: block;
+			text-align: center;
+
+			span {
+				font-size: 18px;
+			}
+
+			img {
+				margin: 0 auto 10px auto;
+    			width: 30px;
+    			display: block;
+			}
+		}		
+	}
+
+	.contactsForm {
+		padding: 40px;
+	}
+});
+
+.sm-block({
+	.contacts {
+		&__item {
+			.size(12);
+			padding: 30px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}		
+	}
+
+	.contactsForm {
+		padding: 20px;
+		display: block;
+
+		> * {
+			display: block;
+			width: 100%;
+			margin: 20px 0;
+		}
+
+		&__btn {
+			text-align: left;
+			margin-bottom: 0;
+		}
+	}
+});

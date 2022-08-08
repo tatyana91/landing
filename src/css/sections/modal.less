@@ -1,0 +1,97 @@
+.modal {
+	position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    background-color: rgba(0,0,0,0.4);    
+
+    &.active {
+    	display: flex;
+    }
+
+    &__content {
+        width: 465px;
+		max-width: 90%;
+	    padding: 40px;
+	    position: relative;
+	    background-color: #fff;
+	    border-radius: 4px;
+    }
+
+    &__close {
+	    background-image: url("@{path_images}/close.svg");
+	    background-position: center;
+	    width: 40px;
+	    height: 40px;
+	    background-repeat: no-repeat;
+	    position: absolute;
+	    right: 0;
+	    top: 0;
+	    cursor: pointer;
+    }
+
+    &__title {
+	    font-weight: 600;
+	    font-size: 24px;
+	    line-height: 24px;
+	    margin-bottom: 15px;
+	    color: @color_blue;
+	}
+
+	&__link {
+	    margin-bottom: 10px;
+	    display: block;
+	}
+
+	&__reset-link{
+		margin-bottom: 10px;
+		display: block;
+	}
+
+	&__error {
+		margin-bottom: 20px;
+		color: @color_error;
+		font-weight: bold;
+	}
+
+	&__success {
+		margin-bottom: 20px;
+		color: @color_success;
+		font-weight: bold;
+	}
+}
+
+.modalBlock {
+	margin-bottom: 20px;
+	display: block;
+
+	&__label {
+		margin-bottom: 6px;
+		width: 100%;
+		display: block;
+		font-weight: 600;
+	}
+
+	&__input {		
+		width: 100%;
+		display: block;
+	}
+}
+
+.modal__btns {
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
+
+    .btn {
+    	padding: 11px;
+    }
+}

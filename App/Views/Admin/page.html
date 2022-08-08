@@ -1,0 +1,51 @@
+{% extends "Admin/base.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+    {% set show_menu = '' %}
+    {% if page.show_menu == 1 %}
+        {% set show_menu = 'checked' %}
+    {% endif %}
+
+    <form action='/admin/pages?act={{act}}&id={{page.id}}' method='POST' enctype='multipart/form-data'>
+        <div class='input_div input-group col-lg-4'>
+            <span class='input-group-addon' style="padding-left: 0">
+                <input type='checkbox' name='show_menu' value='{{page.show_menu}}' {{show_menu}}>
+            </span>
+            <span class='show_label'>Показывать в главном меню</span>
+        </div>
+        <div class="item-title">Родительская страница:</div>
+        <select name="parent_id">
+            <option value="0">не выбрано</option>
+            {% for parent_page in pages %}
+                {% set selected = '' %}
+                {% if (parent_page.id == page.parent_id) %}
+                    {% set selected = 'selected' %}
+                {% endif %}
+                <option value="{{parent_page.id}}" {{selected}}>{{parent_page.full_title}}</option>
+            {% endfor %}
+        </select>
+        <div class="item-title">Заголовок:</div>
+        <input type='text' name='title' value='{{page.title}}'/>
+        <div class="item-title">Название пункта меню:</div>
+        <input type='text' name='title_menu' value='{{page.title_menu}}'/>
+        <div class="item-title">Ссылка для меню (генерируется автоматом из названия):</div>
+        <input type='text' name='url' value='{{page.url}}'/>
+        <div class="item-title">Краткое описание:</div>
+        <textarea name="description" style="height: 100px; resize: vertical">{{page.description}}</textarea>
+        <div class="item-title">Описание (перед вставкой текста очистите его от форматов с помощью
+            <a href="https://www.artlebedev.ru/typograf/" target="_blank">типографа</a>):</div>
+        <div>
+            <div class='js-tinymce tinymce tinymceContent' data-name="text">{{page.text | raw}}</div>
+        </div>
+
+        <div class="item-title">Рейтинг:</div>
+        <input type='text' name='rate' value='{{page.rate}}'/>
+        <input type='hidden' name='id' value='{{page.id}}'/>
+        <input type='hidden' name='act' value='{{act}}'/>
+        <input type='submit' value='Сохранить'>
+    </form>
+{% endblock %}

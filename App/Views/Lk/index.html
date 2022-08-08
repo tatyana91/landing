@@ -1,0 +1,47 @@
+{% extends "/base.html" %}
+
+{% block header_menu %}
+    {% include("/Lk/inc/header_menu.html") %}
+{% endblock %}
+
+{% block mobile_header_menu %}
+    {% include("/Lk/inc/mobile_header_menu.html") %}
+{% endblock %}
+
+{% block header_btns %}
+    {% include("/Lk/inc/header_btns.html") %}
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <div class="wrapper">
+            <div class="profileBlock">
+                <h1 class="titleLevel1 profileBlock__title">Личный кабинет</h1>
+                <div class="profileBlock__item lk">
+                    <div class="lk__contacts">
+                        <div class="lk__photo">
+                            <img src="/images/profile.svg" alt="Личный кабинет">
+                        </div>
+                        <div class="lk__fioWrap">
+                            <div class="lk__fio">{{user.fio}}</div>
+                            <div>{{user.phone}}</div>
+                            <div>{{user.email}}</div>
+                        </div>
+                    </div>
+
+                    <div class="lk__studyInfo">
+                        <div>{{user.city}}</div>
+                        <div>{{user.vuz}}</div>
+                        <div>{{user.faculty}}</div>
+                        <div>{{user.specialty}}</div>
+                        <div>{{user.course}}</div>
+                    </div>
+
+                    <div class="profileBlock__btn">
+                        <a href="/lk/nastrojki" class="btn btnBlue">Редактировать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
